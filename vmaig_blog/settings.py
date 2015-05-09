@@ -185,7 +185,7 @@ PAGE_NUM = 3
 
 #email配置#########################################
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = ''                       #SMTP地址 例如: stmp.163.com
+EMAIL_HOST = ''                       #SMTP地址 例如: smtp.163.com
 EMAIL_PORT = 25                       #SMTP端口 例如: 25
 EMAIL_HOST_USER = ''                  #我自己的邮箱 例如: xxxxxx@163.com
 EMAIL_HOST_PASSWORD = ''              #我的邮箱密码 例如  xxxxxxxxx
