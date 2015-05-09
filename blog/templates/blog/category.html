@@ -1,0 +1,28 @@
+{% extends "./blog/base.html"%}
+
+{% block main%}
+<div class="row">
+    <div id="vmaig-content" class="col-md-8 col-lg-9">
+        <div id="all-post-list" class="well">
+            {% if article_list %}
+            {% with post_list=article_list %}
+            {% for post in post_list %} 
+                {% include "./blog/include/category_post.html"%}
+            {% endfor %}
+            {% endwith %}
+            {% endif %}
+        </div>
+        
+        <!--分页 -->
+        {% if page_obj%}
+        {% include "./blog/include/pagination.html"%}
+        {% endif %}
+    </div>
+    <div id="vmaig-side" class="col-md-4 col-lg-3 hidden-xs">
+        {% include "./blog/widgets/tags_cloud.html"%}
+        {% include "./blog/widgets/search.html"%}
+        {% include "./blog/widgets/hotest_posts.html"%}
+        {% include "./vmaig_comments/latest_comments.html"%}
+    </div>
+</div>
+{% endblock %}

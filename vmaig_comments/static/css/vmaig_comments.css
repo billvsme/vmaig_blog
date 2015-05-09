@@ -1,0 +1,95 @@
+/*按钮样式*/
+.btn-vmaig-comments{
+    color: #FFF;
+    background-color: #D9534F;
+    border-color: #D43F3A;
+}
+
+/*panel 样式*/
+.panel-vmaig-comments{
+    box-shadow: 0px 0px 5px #C2C2C2;
+    border-color:#EEE;
+}
+
+.panel-vmaig-comments .panel-heading{
+    color: #EEE;
+    background-color: #222;
+    border-color: #EEE;
+}
+
+.panel-vmaig-comments .input-group-addon{
+    color: #EEE;
+    background-color: #3D4450;
+    border:2px solid #3D4450;
+}
+
+.panel-vmaig-comments .badge{
+    background-color:#D94600;
+}
+
+.panel-vmaig-comments span.btn{
+    padding:0px;
+    margin-right:5px;
+}
+
+/*评论框****************/
+.vmaig-comment ul{
+    padding-left:0px;
+}
+.vmaig-comment ul li{
+    list-style-type:none;
+    border-top:1px dotted #ddd;
+    padding:10px;
+}
+
+.vmaig-comment-tx {
+    float:left;
+}
+
+.vmaig-comment-content{
+    padding-left:50px;
+    word-break: break-all;
+}
+
+.vmaig-comment-content h1{
+    margin:0px;
+    font-size:15px;
+    padding-bottom:10px;
+}
+
+.vmaig-comment-edit {
+    padding-left:50px;
+    margin-bottom:20px;
+}
+
+.vmaig-comment-edit textarea{
+    width:100%;
+    margin-bottom:10px;
+}
+
+.vmaig-comment-edit button{
+
+}
+
+/***********************/
+
+
+/*首页右侧的 comment面板样式*/
+.comment-tx {
+    float:left;
+}
+
+.comment-info {
+    padding-left:20%;
+}
+
+.comment-username a{
+    color: #438904;
+    font-size: 14px;
+}
+
+.comment-content {
+    word-break:break-all;
+}
+
+/***********************/

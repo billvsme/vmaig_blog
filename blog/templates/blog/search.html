@@ -1,0 +1,55 @@
+{% extends "./blog/base.html" %}
+
+{% block main%}
+
+<div class="row">
+    <div id="vmaig-content" class="col-md-8 col-lg-9">
+        <div id="all-post-list" class="well">
+
+            {% if article_list %}
+            {% with post_list=article_list %}
+            {% for post in post_list %} 
+                {% include "./blog/include/search_post.html"%}
+            {% endfor %}
+            {% endwith %}
+            {% endif %}
+
+            
+        </div>
+        <!--分页 -->
+        <ul class="pager">
+            {% if  page_obj.has_previous %}
+                <li class="previous">
+                    <a href="?s={{s}}&page={{page_obj.previous_page_number}}">&larr; 上一页</a>
+                </li>
+            {% else %}
+                <li class="previous disabled">
+                    <a>&larr; 上一页</a>
+                </li>
+            {% endif %}
+
+            <li class="page-number">{{page_obj.number}}/{{paginator.num_pages}}</li>
+
+            {% if  page_obj.has_next%}
+                <li class="next">
+                    <a href="?s={{s}}&page={{page_obj.next_page_number}}">下一页 &rarr;</a>
+                </li>
+            {% else %}
+                <li class="next disabled">
+                    <a>下一页 &rarr;</a>
+                </li>
+            {% endif %}
+        </ul>
+       
+
+    </div>
+    <div id="vmaig-side" class="col-md-4 col-lg-3 hidden-xs">
+        {% include "./blog/widgets/tags_cloud.html"%}
+        {% include "./blog/widgets/search.html"%}
+        {% include "./blog/widgets/hotest_posts.html"%}
+        {% include "./vmaig_comments/latest_comments.html"%}
+    </div>
+</div>
+
+{% endblock%}
+

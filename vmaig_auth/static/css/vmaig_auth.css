@@ -1,0 +1,160 @@
+/*按钮样式*/
+.btn-vmaig-auth{
+    color: #FFF;
+    background-color: #D9534F;
+    border-color: #D43F3A;
+}
+
+
+/*login 样式*/
+#vmaig-auth-login {
+    max-width: 400px;
+    margin: 20px auto 20px;
+}
+
+#vmaig-auth-login-form{
+    padding:30px 20px;
+}
+
+#vmaig-auth-login-form .btn{
+    width:48%;
+    padding:10px;
+}
+
+#vmaig-auth-forgetpassword a{
+    color:red;
+    font-size:14px;
+}
+
+
+/*panel 样式*/
+.panel-vmaig-auth{
+    box-shadow: 0px 0px 5px #C2C2C2;
+    border-color:#EEE;
+}
+
+.panel-vmaig-auth .panel-heading{
+    color: #EEE;
+    background-color: #222;
+    border-color: #EEE;
+}
+
+.panel-vmaig-auth .input-group-addon{
+    color: #EEE;
+    background-color: #3D4450;
+    border:2px solid #3D4450;
+}
+
+.panel-vmaig-auth .badge{
+    background-color:#D94600;
+}
+
+.panel-vmaig-auth span.btn{
+    padding:0px;
+    margin-right:5px;
+}
+
+/*register 样式*/
+#vmaig-auth-register {
+    max-width: 500px;
+    margin: 20px auto 20px;
+}
+
+#vmaig-auth-register .alert {
+    margin:15px;
+}
+
+#vmaig-auth-register-form {
+    padding: 20px;
+}
+
+/*forgetpassword 样式*/
+#vmaig-auth-forgetpassword {
+    max-width: 500px;
+    margin: 20px auto 20px;
+}
+
+#vmaig-auth-forgetpassword .alert {
+    margin:15px;
+}
+
+#vmaig-auth-forgetpassword-form {
+    padding: 20px;
+}
+
+/*resetpassword 样式*/
+#vmaig-auth-resetpassword {
+    max-width: 500px;
+    margin: 20px auto 20px;
+}
+
+#vmaig-auth-resetpassword .alert {
+    margin:15px;
+}
+
+#vmaig-auth-resetpassword-form {
+    padding: 20px;
+}
+
+/*changepassowrd 样式*/
+#change-password h1{
+    margin-bottom:30px;
+    font-size:26px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+
+}
+
+
+/*changetx 样式*/
+#change-tx h1{
+    font-size:26px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+.change-tx-left {
+    margin:20px;
+    padding-right:60px;
+    border-right:1px solid #eee;
+
+    float:left;
+}
+
+.screen-tx {
+    width:400px;
+    height:300px;
+    line-height: 300px;
+    background:#e2e2e2;
+    display: table-cell;
+    vertical-align: middle;
+    text-align:center;
+}
+
+.screen-tx .jcrop-holder{
+    border:none; 
+    max-width:100%; 
+    max-height:100%; 
+    margin:auto;
+}
+
+#upload-tx-form{
+    position: relative;
+    margin-left:80px;
+    margin-top:20px;
+
+}
+#upload-tx{
+    position: absolute;
+    top:-2px;
+    left:105px;
+    width:40px;
+    opacity: 0;
+    font-size: 30px;
+
+}
+
+#save-tx{
+    margin-right:20px;
+}
+

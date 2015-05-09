@@ -1,0 +1,79 @@
+{% extends "./blog/base.html" %}
+
+{% block main %}
+<div class="row">
+    <div id="vmaig-content" class="col-md-8 col-lg-9">
+        <div id="article-page" class="well">
+            <ol class="breadcrumb">
+                <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li><a href="/category/{{article.category}}/">{{article.category}}</a></li>
+                <li class="hidden-xs"><a><span class="glyphicon glyphicon-calendar"></span> {{article.pub_time|date:"Y-m-d"}}</a></li>
+                <li><a>
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                    {{article.view_times}}
+                </a></li>
+                <li class="pull-right"><a>
+                    <span class="glyphicon glyphicon-user"></span> {{article.author}}
+                </a></li>
+            </ol>
+
+            <div id="article">
+                <div class="article-title">
+                    <h1>{{article.title}}</h1>
+                </div>
+                <div class="article-tags">
+                    {% for tag in article.get_tags%}
+                    <a href="/tags/{{tag}}/">
+                        <span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+                <hr/>
+                <div class="article-content">
+                    {% autoescape off%}
+                    {{article.content}}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+
+        <!--评论框 -->
+        {% include "./vmaig_comments/vmaig_comments.html"%}
+
+    </div>
+
+    <div id="vmaig-side" class="col-md-4 col-lg-3 hidden-xs">
+
+        {% include "./blog/widgets/tags_cloud.html"%}
+        {% include "./blog/widgets/search.html"%}
+        {% include "./blog/widgets/hotest_posts.html"%}
+        {% include "./vmaig_comments/latest_comments.html"%}
+    </div>
+</div>
+{% endblock %}
+
+{% block css%}
+<link type="text/css" rel="stylesheet" href="/static/syntaxhighlighter/styles/shCoreDefault.css"/>
+<style type="text/css">
+    #article {
+        font-size:14px;
+        color:#000;
+    }
+
+    blockquote {
+        font-size:14px;
+    }
+</style>
+{% endblock %}
+
+
+{% block js%}
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+{% endblock%}

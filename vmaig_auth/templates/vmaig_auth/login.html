@@ -1,0 +1,62 @@
+<div id="vmaig-auth-login">
+    <div class="panel panel-vmaig-auth">
+        <div class="panel-heading">
+            <h3 class="panel-title">请登陆</h3>
+        </div>
+        <form id="vmaig-auth-login-form" class="clearfix" method="post" role="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <input id="vmaig-auth-login-username"type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </div>
+                    <input id="vmaig-auth-login-password" type="password" class="form-control">
+                </div>
+            </div>
+            <div id="vmaig-auth-forgetpassword"><a href="/forgetpassword/">忘记密码?</a></div>
+            <button id="vmaig-auth-login-button" type="submit" class="btn btn-vmaig-auth pull-left">登录</button>
+            <a href="/register" type="button" class="btn btn-vmaig-auth pull-right">注册</a>
+        </form>
+    </div>
+</div>
+
+
+<script language="javascript" type="text/javascript">
+    $('#vmaig-auth-login-form').submit(function(){
+        $.ajax({
+            type:"POST",
+            url:"/usercontrol/login",
+            data:{"username":$("#vmaig-auth-login-username").val(),"password":$("#vmaig-auth-login-password").val()},
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));  
+            },
+            success:function(data,textStatus){
+                var errors = data["errors"];
+                if(errors.length==0){
+                    location.replace("/"); 
+                }
+                else{
+                    //alert(errors);
+                    var str = ""
+                    for (var key in errors){
+                        str += errors[key]+"\n";
+                    }
+                    alert(str);
+                }
+                
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.responseText);
+            }
+        });
+        return false;
+    }); 
+</script>

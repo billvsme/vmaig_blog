@@ -1,0 +1,55 @@
+{% extends "./blog/base.html" %}
+
+{%block main%}
+<div class="row">
+    <div id="vmaig-content" class="col-md-8 col-lg-9">
+        <!-- 警告框 -->
+        <div class="well alert hidden-xs fade in">
+            <button class="close" data-dismiss="alert" type="button">&times;</button>
+            欢迎来到
+            <a href="http://vmaig.com" target="_blank">Vmaig</a>
+            ,如果有任何问题可以加QQ：994171686。
+        </div>
+
+        <div class="visible-xs">
+            <div class="search">
+                <form class="form-inline clearfix" role="form" method="get" action="/search/"> 
+                    <input type="text" class="form-control" id="top-s" name="s">
+                    <button class="btn btn-vmaig">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- 首页文章列表 -->
+        <div id="home-post-list">
+            <!-- 首页轮播 -->
+            {% if carousel_page_list%}
+            {% include "./blog/include/carousel.html"%}
+            {% endif%}
+
+            <!--首页文章列表 -->
+            {% if article_list %}
+            {% with post_list=article_list %}
+            {% for post in post_list %}
+                {% include "./blog/include/home_post.html" %}
+            {% endfor %}
+            {% endwith %}
+            {% endif %}
+
+            <!--分页 -->
+            {% if page_obj%}
+            {% include "./blog/include/pagination.html"%}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- 右边的widgets -->
+    <div id="vmaig-side" class="col-md-4 col-lg-3 hidden-xs">
+        {% include "./blog/widgets/tags_cloud.html"%}
+        {% include "./blog/widgets/search.html"%}
+        {% include "./blog/widgets/hotest_posts.html"%}
+        {% include "./vmaig_comments/latest_comments.html"%}
+    </div>
+</div>
+{% endblock %}

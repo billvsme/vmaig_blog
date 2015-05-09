@@ -1,0 +1,216 @@
+{% extends "./blog/base.html" %}
+
+{% block main %}
+
+<div class="timeline-content visible-xs">
+    <span>新闻来源：</span>
+    
+    <span class="label label-success">oschina</span>
+    <span class="label label-danger">chiphell</span>
+    <span class="label label-primary">cnBeta</span>
+    <span class="label label-warning">freebuf</span>
+    <span class="label label-default">其他</span>
+
+</div>
+<ul class="timeline">
+    {% for timeblock in timeblocks%}
+    <li>
+        <div class="timeline-time">
+            {% if forloop.first %}
+            <div class="pull-right hidden-xs">
+                <span>新闻来源：</span>
+                
+                <span class="label label-success">oschina</span>
+                <span class="label label-danger">chiphell</span>
+                <span class="label label-primary">cnBeta</span>
+                <span class="label label-warning">freebuf</span>
+                <span class="label label-default">其他</span>
+            </div>
+            {% endif %}
+
+            <span>{{timeblock.0.pub_time|date:"D d M Y"}}</span>
+
+        </div>
+        <div class="timeline-ico"></div>
+        <div class="timeline-content">
+
+            {% for news in timeblock%}
+            <a class="label label-{{news.get_news_from_display}} label-news " onclick="return hs.htmlExpand(this, { objectType: 'iframe' ,minWidth:600,headingText:'{{news.title}}'})" href="/news/{{news.pk}}">{{news.title}}</a>
+            {% endfor %}
+
+        </div>
+    </li>
+    {% endfor%}
+</ul>
+
+<div class="timeline-select hidden-xs">
+    <ul class="list-group">
+        <li class="list-group-item {% if active == 0 %}active{% endif %}"><a href="/news/?start=0&end=6">最近7天</a></li>
+        <li class="list-group-item {% if active == 1 %}active{% endif %}"><a href="/news/?start=7&end=13">前一周</a></li>
+        <li class="list-group-item {% if active == 2 %}active{% endif %}"><a href="/news/?start=14&end=20">前二周</a></li>
+        <li class="list-group-item {% if active == 3 %}active{% endif %}"><a href="/news/?start=21&end=27">前三周</a></li>
+        <li class="list-group-item {% if active == 4 %}active{% endif %}"><a href="/news/?start=28&end=34">前四周</a></li>
+        <li class="list-group-item {% if active == 5 %}active{% endif %}"><a href="/news/?start=35&end=41">前五周</a></li>
+    </ul>
+</div>
+
+{% endblock %}
+
+{% block js%}
+
+<script src="/static/highslide/highslide-with-html.min.js"></script> 
+<script language="javascript" type="text/javascript">
+    hs.graphicsDir = '/static/highslide/graphics/';
+    hs.outlineType = 'rounded-white';
+    hs.showCredits = false;
+    hs.wrapperClassName = 'draggable-header';
+    hs.marginTop = 70;
+
+</script>
+
+{% endblock%}
+
+
+{% block css%}
+
+<link rel="stylesheet" href="/static/highslide/highslide.css">
+<style type="text/css">
+
+    /*手机端控制弹出框宽度*/
+    @media screen and (max-width: 400px) {
+        .highslide-body {
+            width:320px !important;
+        }
+
+        ..highslide-html {
+            width:320px !important;
+        }
+
+        .highslide-html-content{
+            width:325px !important;
+        }
+
+        .highslide-html-blur{
+            width:320px !important;
+        }
+    }
+
+    .highslide-header  {
+        height:30px !important;
+    }
+    .highslide-heading {
+        font-size:18px !important;
+
+        max-width: 90%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block!important;
+        overflow: hidden;
+    }
+
+    .timeline {
+        list-style: none;
+        position: relative;
+    }
+
+
+    .timeline:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 6px;
+        background: #D94600;
+        left: 10%;
+    }
+
+    .timeline li{
+        position: relative;
+    }
+
+    .timeline-time {
+        margin-left:10%;
+        margin-bottom:10px;
+    }
+
+    .timeline-time>span:last-child {
+        font-size: 18px;
+        color: #FFFF00;
+        font-weight: bold;
+    }
+
+    .timeline-time div {
+        font-size:16px;
+    }
+
+    .timeline-time div span:first-child {
+        font-size: 18px;
+        color: #FFFF00;
+        font-weight: bold;
+
+    }
+
+    .timeline-ico {
+        width: 10px;
+        height: 10px;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        font-size: 1.4em;
+        line-height: 40px;
+        position: absolute;
+        color: #fff;
+        background: #eee;
+        border-radius: 50%;
+        box-shadow: 0 0 0 8px #D94600;
+        text-align: center;
+        left: 10%;
+        top: 0;
+        margin: 0 0 0 -38px;
+    }
+
+    .timeline-content {
+        margin: 0 0 15px 10%;
+        background-color: rgba(0,0,0,0.6);
+        padding:10px;
+    }
+
+    .label-news{
+        display:inline-block;
+        font-size:14px;
+        max-width:100%;
+        margin:3px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+        overflow: hidden;
+
+    }
+
+    .timeline-select {
+        position: fixed;
+        top:70px;
+        left:20px;
+    }
+
+    .label-oschina {
+        background-color: #5cb85c;
+    }
+
+    .label-chiphell {
+        background-color: #d9534f;
+    }
+
+    .label-cnBeta {
+        background-color: #337ab7;
+    }
+
+    .label-freebuf {
+        background-color: #f0ad4e;
+    }
+
+</style>
+
+{% endblock %}

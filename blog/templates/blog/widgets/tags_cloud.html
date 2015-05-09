@@ -1,0 +1,57 @@
+<div id="tags_cloud" class="">
+</div>
+
+<style>
+#tags_cloud {
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+</style>
+
+<script src="/static/lib/d3/d3.js"></script>
+<script src="/static/js/d3.layout.cloud.js"></script>
+<script>
+    var fill = d3.scale.category20();
+
+    //在tags数组中存放blog的tags,用于在标签云中显示
+    var tags = [ "反汇编","OllyDbg","PE","ASM","Django","Python","Java","Bootstrap","Gentoo","linux","Shell","加密与解密","逆向","爬虫",];
+
+    var words = tags.concat(tags).concat(tags);
+      
+    d3.layout.cloud().size([250, 250])
+        .words(words.map(function(d) {
+            return {text: d, size: 10 + Math.random() * 25};
+        }))
+        .padding(5)
+        .rotate(function() { return ~~(Math.random() * 2) * 90; })
+        .font("Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'")
+        .fontSize(function(d) { return d.size; })
+        .on("end", draw)
+        .start();
+
+    function draw(words) {
+        d3.select("#tags_cloud").append("svg")
+          .attr("width", 250)
+          .attr("height", 250)
+          .append("g")
+          .attr("transform", "translate(125,125)");
+
+        for (var i=0; i< words.length;++i)
+        {
+            var str = words[i];
+            d3.select("g").append("a").attr("xlink:href","/tag/"+words[i].text)
+                .append("text").text(words[i].text) .style("font-size", words[i].size+"px")
+                .style("font-family", "'Microsoft YaHei','WenQuanYi Micro Hei','tohoma,sans-serif'")
+                .style("fill", fill(i))
+                .attr("text-anchor", "middle")
+                .attr("transform", 
+                    "translate(" + [words[i].x, words[i].y] + ")rotate(" + words[i].rotate + ")"
+          )
+        }
+    }
+</script>
+
+
+
+

@@ -1,0 +1,35 @@
+{% extends "./blog/base.html"%}
+
+{% block main%}
+
+<div style="height:80px;"></div>
+<div class="row">
+    <div class="col-md-2">
+        <a class="list-group-item">
+            <img src="{{user.img}}" alt="" width="40">
+            &nbsp;{{user.username}} 
+        </a>
+        <a href="/user/changetx"class="list-group-item active">
+            修改头像
+            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+        <a href="/user/changepassword"class="list-group-item">
+            修改密码
+            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+        <a href="/register"class="list-group-item">
+            注册新用户
+            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+        <a href="/login"class="list-group-item">
+            重新登陆
+            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+
+    </div>
+    <div class="col-md-10">
+        {%include "./vmaig_auth/changetx.html"%}
+    </div>
+</div>
+
+{% endblock%}

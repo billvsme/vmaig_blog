@@ -1,0 +1,40 @@
+<div id="vmaig-latest-comments">
+    <div class="panel panel-vmaig-comments">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span class="glyphicon glyphicon-comment"></span>
+                最新评论
+                <span class="glyphicon glyphicon-remove btn panel-close pull-right" data-dismiss="alert"></span>
+                <span class="glyphicon glyphicon-chevron-up btn panel-collapse pull-right"  data-toggle="collapse" data-target="#latest-comment-list"></span>
+            </h3>
+        </div>
+        <ul id="latest-comment-list" class="list-group collapse in">
+            {% for comment in latest_comment_list%}
+            <li class="list-group-item clearfix">
+            <div class="comment-tx">
+                {% if comment.user.img%}
+                <img src="{{comment.user.img}}" width="40" height="40" alt="">
+                {%else%}
+                <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40" height="40" alt="">
+                {%endif%}
+            </div>
+            <div class="comment-info">
+                <div class="comment-username">
+                    <a href="#">{{comment.user.username}} 评论:</a>
+                </div>
+                <div class="comment-content">
+                    <a href="/article/{{comment.article.en_title}}.html">
+                        {% autoescape off%}
+                        {{comment.comment|slice:"30" }}
+                        {% endautoescape %}
+                        {% if comment.comment|length > 30%}
+                        ...
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>     
+</div>

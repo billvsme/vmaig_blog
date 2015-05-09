@@ -1,0 +1,63 @@
+<div class="well">
+    <div class="vmaig-comment">
+        <div class="vmaig-comment-tx">
+            {% if user.img%}
+            <img src="{{user.img}}" width="40"></img>
+            {%else%}
+            <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>
+            {%endif%}
+        </div>
+        <div class="vmaig-comment-edit clearfix">
+            <form id="vmaig-comment-form" method="post" role="form">
+                {% csrf_token %}
+                <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="请输入评论 限200字!"></textarea>
+                <button type="submit" class="btn btn-vmaig-comments pull-right">提交</button>
+            </form>
+        </div>
+        <ul>
+            {% for comment in comment_list%}
+            <li>
+            <div class="vmaig-comment-tx">
+                {% if comment.user.img %}
+                <img src={{comment.user.img}} width="40"></img>
+                {%else%}
+                <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>
+                {%endif%}
+            </div>
+            <div class="vmaig-comment-content">
+                <a><h1>{{comment.user.username}}</h1></a>
+                <p>
+                    评论：
+                    {% autoescape on%}
+                    {{comment.comment}}
+                    {% endautoescape %}
+                </p>
+                <p>{{comment.create_time|date:"Y-m-d H:i:s" }}</p>
+            </div>
+            </li>
+            {% endfor%}
+        </ul>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    $('#vmaig-comment-form').submit(function(){
+        $.ajax({
+            type:"POST",
+            url:"/comment/{{article.en_title}}",
+            data:{"comment":$("#comment").val()},
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));  
+            },
+            success:function(data,textStatus){
+                $("#comment").val("");
+                $(".vmaig-comment ul").prepend(data);
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.responseText);
+
+            }
+
+        });
+        return false;
+    }); 
+</script>

@@ -1,0 +1,60 @@
+<div class="all-post clearfix underline">
+    <div class="post-title clearfix">
+        <a href="/category/{{post.category}}/">
+            <div class="pre-cat">
+                <div class="pre-catinner btn">
+                    {{post.category}} 
+                </div>
+                <div class="pre-catarrow">
+                </div>
+            </div> 
+        </a>
+        <h1><a href="/article/{{post.en_title}}.html">{{post.title}}</a></h1>
+
+        <span class="visible-xs-inline-block" style="margin-top:7px;">
+            {{post.pub_time|date:"Y-m-d"}}
+        </span>
+        <div class="post-tags">
+            {% for tag in post.get_tags%}
+            <a href="/tag/{{tag}}/">
+                <span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="post-content ">
+        <div class="row">
+            <div class="col-sm-4">
+                <figure class="thumbnail">
+                    <a href="/article/{{post.en_title}}.html">
+                        <img src="{{post.img}}"  height="400" alt="">
+                    </a>
+                </figure> 
+            </div>
+            <div class="col-sm-8">
+                <p>
+                {% autoescape off%}
+                {{post.summary|slice:"200" }}
+                {% endautoescape %}
+                {% if post.summary|length > 200 %}
+                    ...
+                {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="post-info hidden-xs">
+        <span>
+            <span class="glyphicon glyphicon-calendar"></span>
+            {{post.pub_time|date:"Y-m-d" }}
+        </span>
+        <span>
+            <span class="glyphicon glyphicon-comment"></span>
+            {{post.comment_set.all | length}}
+        </span>
+        <span>
+            <span class="glyphicon glyphicon-eye-open"></span>
+            {{post.view_times}}
+        </span>
+    </div>
+</div>
