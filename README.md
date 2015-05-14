@@ -82,11 +82,11 @@ EMAIL\_HOST\_PASSWORD(你的邮箱密码)，
 
 初始化数据库 :
 
-    python manager syncdb
+    python manage.py syncdb
     
 运行 :
     
-    python manager runserver
+    python manage.py runserver
     
 #接下来该干什么？
 在浏览器中输入 http://127.0.0.1:8000/admin  
