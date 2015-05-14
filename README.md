@@ -1,7 +1,7 @@
 vmaig.com 网站源码
 =================
 #概述
-vmaig\_blog 是一个基于  **Django1.6**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。http://vmaig.com 就是基于vmaig\_blog 搭建的。
+vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。http://vmaig.com 就是基于vmaig\_blog 搭建的。
 #功能
 1. 文章,分类,专栏的添加，删除，修改。支持**tinymce**富文本编辑器。支持文章中代码**高亮**。
 2. 实现**用户注册,登陆,修改密码,忘记重置密码**。通过**邮箱**通知注册用户, 用户忘记密码基于邮件（需要在setting.py设置好邮箱)。
@@ -32,9 +32,9 @@ http://vmaig.com
     cd www
     source bin/acitve
 
-安装Django1.6 :
+安装Django1.8 :
 
-    pip install Django==1.6
+    pip install Django==1.8
 
 安装Pillow （因为处理头像要用到PIL库）:
 
@@ -82,11 +82,13 @@ EMAIL\_HOST\_PASSWORD(你的邮箱密码)，
 
 初始化数据库 :
 
-    python manager syncdb
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py createsuperuser
     
 运行 :
     
-    python manager runserver
+    python manage.py runserver
     
 #接下来该干什么？
 在浏览器中输入 http://127.0.0.1:8000/admin  
