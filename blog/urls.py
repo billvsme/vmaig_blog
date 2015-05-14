@@ -1,12 +1,9 @@
-from django.conf.urls import patterns,url
+from django.conf.urls import url
 from blog.views import IndexView,ArticleView,AllView,SearchView,ColumnView,UserView,NewsView,TagView,CategoryView
-#from django.views.decorators.cache import cache_page
-#from django.contrib.auth.views import login,logout
 from django.views.generic import TemplateView,DetailView
 from blog.models import News
 
-
-urlpatterns = patterns("",
+urlpatterns = [
         url(r'^$',IndexView.as_view(),name='home',kwargs={'page_num':1}),
         url(r'^article/(?P<slug>\w+).html$',ArticleView.as_view()),
         url(r'^all/$',AllView.as_view()),
@@ -21,5 +18,4 @@ urlpatterns = patterns("",
         url(r'^news/(?P<pk>\w+)$',DetailView.as_view(model=News)),
         url(r'^tag/(?P<tag>\w+)/$',TagView.as_view()),
         url(r'^category/(?P<category>\w+)/$',CategoryView.as_view()),
-
-        )
+]

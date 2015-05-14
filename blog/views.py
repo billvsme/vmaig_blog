@@ -6,7 +6,7 @@ from django.shortcuts import render,render_to_response
 from django.template import Context,loader
 from django.views.generic import View,TemplateView,ListView,DetailView
 from django.db.models import Q
-from django.core.cache import get_cache
+from django.core.cache import caches
 from django.core.exceptions import PermissionDenied
 from django.contrib import auth
 from django.contrib.auth.forms import PasswordChangeForm,SetPasswordForm
@@ -22,9 +22,9 @@ import logging
 
 #缓存
 try:
-    cache = get_cache('memcache')
+    cache = caches['memcache']
 except ImportError as e:
-    cache = get_cache('default')
+    cache = caches['default']
 
 #logger
 logger = logging.getLogger(__name__)

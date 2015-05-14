@@ -1,7 +1,7 @@
-from django.conf.urls import patterns,url
+from django.conf.urls import url
 from vmaig_comments.views import CommentControl
 
 
-urlpatterns = patterns("",
+urlpatterns = [
         url(r'^comment/(?P<slug>\w+)$',CommentControl.as_view()),
-    )
+]

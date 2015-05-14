@@ -1,7 +1,7 @@
-from django.conf.urls import patterns,url
+from django.conf.urls import url
 from vmaig_auth.views import UserControl
 
 
-urlpatterns = patterns("",
+urlpatterns = [
         url(r'^usercontrol/(?P<slug>\w+)$',UserControl.as_view()),
-        )
+]
