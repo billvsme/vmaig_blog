@@ -1,5 +1,8 @@
 vmaig.com 网站源码
 =================
+
+#更新日志
+2015/5/15 从django1.6 升级到 django1.8 (还保留django1.6分支)
 #概述
 vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。http://vmaig.com 就是基于vmaig\_blog 搭建的。
 #功能
