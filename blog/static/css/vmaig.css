@@ -82,6 +82,14 @@ footer {
     box-shadow:0px 0px 20px #222;
 }
 
+.padding10 {
+    padding:10px;
+}
+
+.margin4 {
+    margin:4px;
+}
+
 /*向左移动20px*/
 .left20px{
     margin-left:-20px;
