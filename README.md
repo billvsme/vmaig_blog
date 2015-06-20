@@ -1,8 +1,14 @@
 vmaig.com 网站源码
 =================
+#有问题欢迎加qq群
+vmaig qq群: 458788510  
+我的qq: 994171686  
+
 
 #更新日志
-2015/5/15 从django1.6 升级到 django1.8 (还保留django1.6分支)
+2015/5/15 从django1.6 升级到 django1.8 (还保留django1.6分支)  
+2015/6/21 添加[xadmin分支](https://github.com/billvsme/vmaig_blog/tree/xadmin),xadmin分支中使用xadmin作为后台管理(使用 django 1.8),如果你想后台比较漂亮可以切换到xadmin分支(注意你不需要pip install django-xadmin 但是需要安装django-crispy-forms跟django-reversion详细步骤见xadmin分支中的README)  
+
 #概述
 vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。http://vmaig.com 就是基于vmaig\_blog 搭建的。
 #功能
