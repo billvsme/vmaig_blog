@@ -3,6 +3,7 @@ vmaig.com 网站源码
 
 #更新日志
 2015/5/15 从django1.6 升级到 django1.8 (还保留django1.6分支)
+2015/6/21 添加xadmin分支，xadmin分支中使用xadmin作为后台管理 (django 1.8)
 #概述
 vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。http://vmaig.com 就是基于vmaig\_blog 搭建的。
 #功能
@@ -42,6 +43,11 @@ http://vmaig.com
 安装Pillow （因为处理头像要用到PIL库）:
 
     pip install Pillow
+
+安装 crispy\_forms 和 reversion (因为xadmin需要)
+
+    pip install django-crispy-forms
+    pip install django-reversion
 
 
 如果想使用七牛云替代本地存储头像，安装qiniu :
@@ -94,7 +100,7 @@ EMAIL\_HOST\_PASSWORD(你的邮箱密码)，
     python manage.py runserver
     
 #接下来该干什么？
-在浏览器中输入 http://127.0.0.1:8000/admin  
+在浏览器中输入 http://127.0.0.1:8000/xadmin  
 输入前面初始化数据库时的用户名密码。  
 后台中，可以  
 通过“轮播”添加首页的轮播  
