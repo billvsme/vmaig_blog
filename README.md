@@ -29,6 +29,7 @@ http://vmaig.com
 ![首页](http://vmaig.qiniudn.com/screenshot/vmaig_01.jpg)
 ![头像](http://vmaig.qiniudn.com/screenshot/vmaig_02.jpg)
 ![评论](http://vmaig.qiniudn.com/screenshot/vmaig_03.jpg)
+![新闻](http://vmaig.qiniudn.com/screenshot/vmaig_news.jpg)
 
 #安装运行
 安装virtualenv :
