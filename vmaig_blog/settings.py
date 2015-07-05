@@ -42,8 +42,10 @@ INSTALLED_APPS = (
     'blog',
     'vmaig_auth',
     'vmaig_comments',
+
     'xadmin',
     'crispy_forms',
+    'reversion',
 )
 
 MIDDLEWARE_CLASSES = (

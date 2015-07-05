@@ -4,7 +4,7 @@ from django.views.generic import TemplateView,DetailView
 from blog.models import News
 
 urlpatterns = [
-        url(r'^$',IndexView.as_view(),name='home',kwargs={'page_num':1}),
+        url(r'^$',IndexView.as_view()),
         url(r'^article/(?P<slug>\w+).html$',ArticleView.as_view()),
         url(r'^all/$',AllView.as_view()),
         url(r'^search/$',SearchView.as_view()),
