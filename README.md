@@ -8,6 +8,7 @@ vmaig qq群: 458788510
 #更新日志
 2015/5/15 从django1.6 升级到 django1.8 (还保留django1.6分支)  
 2015/6/21 添加[xadmin分支](https://github.com/billvsme/vmaig_blog/tree/xadmin),xadmin分支中使用xadmin作为后台管理(使用 django 1.8),如果你想后台比较漂亮可以切换到xadmin分支(注意你不需要pip install django-xadmin 但是需要安装django-crispy-forms跟django-reversion详细步骤见xadmin分支中的README)  
+2015/7/5 对xadmin分支中的错误进行了比较大的修改  
 
 #概述
 vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。http://vmaig.com 就是基于vmaig\_blog 搭建的。
@@ -107,8 +108,9 @@ EMAIL\_HOST\_PASSWORD(你的邮箱密码)，
 通过“轮播”添加首页的轮播  
 通过“导航条”添加首页nav中的项目  
 通过“专栏” 添加博客专栏（可以和导航条结合起来）  
-通过“新闻” 添加转载的新闻  
+通过“资讯” 添加转载的新闻  
 通过“分类” “文章” 添加分类跟文章  
+通过“用户” 对用户进行操作  
 
 **特别注意**
 首页的便签云中的内容，在后台不能修改。
