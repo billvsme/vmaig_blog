@@ -1,0 +1,4 @@
+Django==1.8
+Pillow==2.9.0
+qiniu==7.0.5
+pytz==2015.7
