@@ -245,8 +245,6 @@ class UserControl(View):
             assert qiniu_access_key and qiniu_secret_key and qiniu_bucket_name
             q = qiniu.Auth(qiniu_access_key, qiniu_secret_key)
 
-            print qiniu_access_key
-
             key = filename
             localfile = path
 
