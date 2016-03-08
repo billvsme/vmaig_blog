@@ -1,4 +1,4 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 """
 Django settings for mysite project.
 
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'vmaig_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates/"),],
+        'DIRS': [os.path.join(BASE_DIR, "templates/")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,11 +106,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#设置user model
+# 设置user model
 AUTH_USER_MODEL = "vmaig_auth.VmaigUser"
 
 
-#log配置###########################################
+# log配置
 LOG_FILE = "./all.log"
 
 LOGGING = {
@@ -127,7 +127,8 @@ LOGGING = {
                 'format': '[%(levelname)s] %(module)s : %(message)s'
                 },
             'verbose': {
-                'format': '[%(asctime)s] [%(levelname)s] %(module)s : %(message)s'
+                'format':
+                    '[%(asctime)s] [%(levelname)s] %(module)s : %(message)s'
                 }
             },
 
@@ -174,7 +175,7 @@ LOGGING = {
         }
 
 
-#cache配置#########################################
+# cache配置
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -185,7 +186,7 @@ CACHES = {
     },
     'memcache': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        #'LOCATION': 'unix:/home/billvsme/memcached.sock',
+        # 'LOCATION': 'unix:/home/billvsme/memcached.sock',
         'LOCATION': '127.0.0.1:11211',
         'options': {
             'MAX_ENTRIES': 1024,
@@ -194,22 +195,22 @@ CACHES = {
 }
 
 
-#分页配置#######################################
+# 分页配置
 PAGE_NUM = 5
 
-#email配置#########################################
+# email配置
+# 如果想要支持ssl (比如qq邮箱) 见 https://github.com/bancek/django-smtp-ssl
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = ''                       #SMTP地址 例如: smtp.163.com
-EMAIL_PORT = 25                       #SMTP端口 例如: 25
-EMAIL_HOST_USER = ''                  #我自己的邮箱 例如: xxxxxx@163.com
-EMAIL_HOST_PASSWORD = ''              #我的邮箱密码 例如  xxxxxxxxx
-EMAIL_SUBJECT_PREFIX = u'vmaig'       #为邮件Subject-line前缀,默认是'[django]'
-EMAIL_USE_TLS = True                  #与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false
+EMAIL_HOST = ''                       # SMTP地址 例如: smtp.163.com
+EMAIL_PORT = 25                       # SMTP端口 例如: 25
+EMAIL_HOST_USER = ''                  # 我自己的邮箱 例如: xxxxxx@163.com
+EMAIL_HOST_PASSWORD = ''              # 我的邮箱密码 例如  xxxxxxxxx
+EMAIL_SUBJECT_PREFIX = u'vmaig'       # 为邮件Subject-line前缀,默认是'[django]'
+EMAIL_USE_TLS = True                  # 与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-#七牛配置#######################################
+# 七牛配置
 qiniu_access_key = ''
 qiniu_secret_key = ''
 qiniu_bucket_name = ''
-
