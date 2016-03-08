@@ -43,27 +43,20 @@ http://vmaig.com
     cd www
     source bin/acitve
 
-安装Django1.8 :
-
-    pip install Django==1.8
-
-安装Pillow （因为处理头像要用到PIL库）:
-
-    pip install Pillow
-
-
-如果想使用七牛云替代本地存储头像，安装qiniu :
-
-    pip install qiniu
-
-如果使用sqlite，安装pytz :
-    
-    pip install pytz
-
-下载代码,切换目录：
+下载代码,切换目录 :
     
     git clone https://github.com/billvsme/vmaig_blog
     cd vmaig_bolg
+
+首先安装相关Pillow 用到的c库 :
+(详见https://pillow.readthedocs.org/en/3.1.x/installation.html#building-on-linux)
+
+    sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev \
+        libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+
+然后 :
+
+    pip install -r requirements.txt
 
 配置setting.py :
 
@@ -90,6 +83,7 @@ EMAIL\_HOST\_PASSWORD(你的邮箱密码)，
     qiniu_secret_key = ''
     qiniu_bucket_name = ''
 ```
+注意：如果想用使用ssl的邮箱（比如qq邮箱），请安装django-smtp-ssl，详见https://github.com/bancek/django-smtp-ssl
 
 初始化数据库 :
 
