@@ -71,7 +71,7 @@ class CommentControl(View):
                     img,
                     comment.user.username,
                     comment.comment,
-                    comment.create_time.strftime("%y-%m-%d %h:%i:%s")
+                    comment.create_time.strftime("%Y-%m-%d %H:%I:%S")
                 )
 
         return HttpResponse(html)
