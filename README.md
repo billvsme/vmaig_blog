@@ -1,5 +1,8 @@
 vmaig.com 网站源码
 =================
+[![ENV](https://img.shields.io/badge/python-2.7%2C3.4-blue.svg)](https://github.com/billvsme/vmaig_blog)
+[![LICENSE](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/billvsme/vmaig_blog/master/LICENSE)
+[![Travis](https://img.shields.io/travis/billvsme/vmaig_blog.svg)](https://travis-ci.org/billvsme/vmaig_blog)
 #有问题欢迎加qq群
 vmaig qq群: 458788510  
 我的qq: 994171686  
@@ -61,13 +64,13 @@ http://vmaig.com
 配置setting.py :
 
     vim vmaig_blog/setting.py
-设置其中的  PAGE\_NUM 每页显示文章数，EMAIL\_HOST(你用的邮箱的smtp)，EMAIL\_PORT(smtp端口)，EMAIL\_HOST\_USER(你的邮箱的用户名)，如果要使用七牛设置好七牛的相关配置。
-EMAIL\_HOST\_PASSWORD(你的邮箱密码)，
+设置其中的  PAGE\_NUM 每页显示文章数，EMAIL\_HOST(你用的邮箱的smtp)，EMAIL\_PORT(smtp端口)，EMAIL\_HOST\_USER(你的邮箱的用户名)，EMAIL\_HOST\_PASSWORD(你的邮箱密码)，如果要使用七牛设置好七牛的相关配置。 
+**注意**：如果想用使用ssl的邮箱（比如qq邮箱），请安装django-smtp-ssl，详见https://github.com/bancek/django-smtp-ssl
 ```
-    #分页配置#######################################
+    # 分页配置
     PAGE_NUM = 3
 
-    #email配置#########################################
+    # email配置
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = ''                        #SMTP地址 例如: smtp.163.com
     EMAIL_PORT = 25                        #SMTP端口 例如: 25
@@ -78,12 +81,11 @@ EMAIL\_HOST\_PASSWORD(你的邮箱密码)，
 
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-    #七牛配置#######################################
+    # 七牛配置
     qiniu_access_key = ''
     qiniu_secret_key = ''
     qiniu_bucket_name = ''
 ```
-注意：如果想用使用ssl的邮箱（比如qq邮箱），请安装django-smtp-ssl，详见https://github.com/bancek/django-smtp-ssl
 
 初始化数据库 :
 
