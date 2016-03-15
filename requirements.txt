@@ -4,3 +4,4 @@ qiniu==7.0.5
 pytz==2015.7
 python-memcached==1.57
 django-smtp-ssl==1.0
+python-memcached==1.57
