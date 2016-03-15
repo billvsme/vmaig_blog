@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER billvsme "994171686@qq.com"
 ADD http://mirrors.163.com/.help/sources.list.trusty /etc/apt/sources.list
 
-rUN apt-get update
+RUN apt-get update
 RUN apt-get install -y nginx
 RUN apt-get install -y postgresql
 RUN apt-get install -y python3
