@@ -1,4 +1,4 @@
-html { overflow: scroll; }
+html, body{ overflow-x: hidden; }
 
 body {
     font-family:"Microsoft YaHei","WenQuanYi Micro Hei","tohoma,sans-serif";
