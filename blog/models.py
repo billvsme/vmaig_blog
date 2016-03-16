@@ -51,6 +51,8 @@ class Nav(models.Model):
     def __unicode__(self):
         return self.name
 
+    __str__ = __unicode__
+
 
 class Category(models.Model):
     name = models.CharField(max_length=40, verbose_name=u'名称')
@@ -72,6 +74,8 @@ class Category(models.Model):
             return '%s-->%s' % (self.parent, self.name)
         else:
             return '%s' % (self.name)
+
+    __str__ = __unicode__
 
 
 class Article(models.Model):
@@ -107,6 +111,8 @@ class Article(models.Model):
     def __unicode__(self):
             return self.title
 
+    __str__ = __unicode__
+
 
 class Column(models.Model):
     name = models.CharField(max_length=40, verbose_name=u'专栏内容')
@@ -124,6 +130,8 @@ class Column(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    __str__ = __unicode__
 
 
 class Carousel(models.Model):
