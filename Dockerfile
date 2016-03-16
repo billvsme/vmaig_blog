@@ -3,12 +3,14 @@ MAINTAINER billvsme "994171686@qq.com"
 ADD http://mirrors.163.com/.help/sources.list.trusty /etc/apt/sources.list
 
 RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y vim
 RUN apt-get install -y nginx
 RUN apt-get install -y postgresql
-RUN apt-get install -y python3
-RUN apt-get install -y git
+RUN apt-get install -y memcached
 RUN apt-get install -y python-dev python-setuptools
-RUN apt-get install -y python3-dev python3-setuptools
+# RUN apt-get install -y python3
+# RUN apt-get install -y python3-dev python3-setuptools
 RUN apt-get install -y python-pip
 
 COPY . ./vmaig_blog
