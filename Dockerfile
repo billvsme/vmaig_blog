@@ -12,7 +12,7 @@ RUN apt-get install -y python-dev python-setuptools
 # RUN apt-get install -y python3-dev python3-setuptools
 RUN apt-get install -y python-pip
 
-RUN git clone https://github.com/billvsme/vmaig_blog
+RUN git clone git://github.com/billvsme/vmaig_blog.git
 WORKDIR ./vmaig_blog
 
 RUN apt-get install -y libtiff5-dev libjpeg8-dev zlib1g-dev \
@@ -29,6 +29,7 @@ RUN service postgresql start &&\
 
 USER root
 RUN service postgresql start &&\
+    sleep 10 &&\
     python manage.py makemigrations --settings vmaig_blog.settings_docker &&\
     python manage.py migrate --settings vmaig_blog.settings_docker &&\
     echo "from vmaig_auth.models import VmaigUser; VmaigUser.objects.create_superuser('admin', 'admin@example.com', 'password')" | python manage.py shell --settings vmaig_blog.settings_docker &&\
