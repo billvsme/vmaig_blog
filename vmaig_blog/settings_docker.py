@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p1p2e^77+6ex*1@-s6hzcx7l3bx#g2q0w1za1c-x-1p@n6z^x*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -202,7 +202,7 @@ CACHES = {
 
 
 # 分页配置
-PAGE_NUM = 5
+PAGE_NUM = 10
 
 # email配置
 # 如果想要支持ssl (比如qq邮箱) 见 https://github.com/bancek/django-smtp-ssl
@@ -217,6 +217,6 @@ EMAIL_USE_TLS = True                  # 与SMTP服务器通信时，是否启动
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # 七牛配置
-qiniu_access_key = ''
-qiniu_secret_key = ''
-qiniu_bucket_name = ''
+QINIU_ACCESS_KEY = ''
+QINIU_SECRET_KEY = ''
+QINIU_BUCKET_NAME = ''

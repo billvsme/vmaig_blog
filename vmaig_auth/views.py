@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.views.generic import View
+from django.conf import settings
 from django.core.mail import send_mail
 from django.core.exceptions import PermissionDenied
 from django.contrib import auth
@@ -242,10 +243,13 @@ class UserControl(View):
 
         filename = "tx_100x100_{}.jpg".format(request.user.id)
         filedir = "vmaig_auth/static/tx/"
+        static_root = getattr(settings, 'STATIC_ROOT', None)
+        if static_root:
+            filedir = os.path.join(static_root, 'tx')
         if not os.path.exists(filedir):
             os.makedirs(filedir)
 
-        path = filedir + filename
+        path = os.path.join(filedir, filename)
 
         file = open(path, "wb+")
         file.write(imgData)
@@ -261,9 +265,10 @@ class UserControl(View):
         try:
             # 上传头像到七牛
             import qiniu
-            from vmaig_blog.settings import (qiniu_access_key,
-                                             qiniu_secret_key,
-                                             qiniu_bucket_name)
+
+            qiniu_access_key = settings.QINIU_ACCESS_KEY
+            qiniu_secret_key = settings.QINIU_SECRET_KEY
+            qiniu_bucket_name = settings.QINIU_BUCKET_NAME
 
             assert qiniu_access_key and qiniu_secret_key and qiniu_bucket_name
             q = qiniu.Auth(qiniu_access_key, qiniu_secret_key)
@@ -280,7 +285,8 @@ class UserControl(View):
 
             # 图片连接加上 v?时间  是因为七牛云缓存，图片不能很快的更新，
             # 用filename?v201504261312的形式来获取最新的图片
-            request.user.img = "http://vmaig.qiniudn.com/{}?v".format(
+            request.user.img = "http://vmaig.qiniudn.com/{}?v{}".format(
+                filename,
                 time.strftime('%Y%m%d%H%M%S')
             )
             request.user.save()

@@ -211,6 +211,6 @@ EMAIL_USE_TLS = True                  # 与SMTP服务器通信时，是否启动
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # 七牛配置
-qiniu_access_key = ''
-qiniu_secret_key = ''
-qiniu_bucket_name = ''
+QINIU_ACCESS_KEY = ''
+QINIU_SECRET_KEY = ''
+QINIU_BUCKET_NAME = ''
