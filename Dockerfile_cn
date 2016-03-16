@@ -13,7 +13,7 @@ RUN apt-get install -y python-dev python-setuptools
 # RUN apt-get install -y python3-dev python3-setuptools
 RUN apt-get install -y python-pip
 
-RUN git clone git://github.com/billvsme/vmaig_blog.git
+RUN git clone https://github.com/billvsme/vmaig_blog
 WORKDIR ./vmaig_blog
 
 RUN apt-get install -y libtiff5-dev libjpeg8-dev zlib1g-dev \
