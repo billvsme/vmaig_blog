@@ -30,6 +30,7 @@ RUN service postgresql start &&\
 
 USER root
 RUN service postgresql start &&\
+    sleep 10 &&\
     python manage.py makemigrations --settings vmaig_blog.settings_docker &&\
     python manage.py migrate --settings vmaig_blog.settings_docker &&\
     echo "from vmaig_auth.models import VmaigUser; VmaigUser.objects.create_superuser('admin', 'admin@example.com', 'password')" | python manage.py shell --settings vmaig_blog.settings_docker &&\
