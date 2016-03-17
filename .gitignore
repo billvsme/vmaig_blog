@@ -4,3 +4,4 @@
 *.sqlite3
 tx_*.jpg
 */migrations/*
+*.swp
