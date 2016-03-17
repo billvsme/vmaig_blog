@@ -35,3 +35,18 @@ class Notification(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'消息'
         ordering = ['-create_time']
+
+
+class Link(models.Model):
+    title = models.CharField(max_length=100, verbose_name=u'标题')
+    url = models.CharField(max_length=200, verbose_name=u'连接',
+                           null=True, blank=True)
+    type = models.CharField(max_length=20, verbose_name=u'类型',
+                            null=True, blank=True)
+
+    create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
+    update_time = models.DateTimeField(u'更新时间', auto_now=True)
+
+    class Meta:
+        verbose_name_plural = verbose_name = u'友情链接'
+        ordering = ['-create_time']
