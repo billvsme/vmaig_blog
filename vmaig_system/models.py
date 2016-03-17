@@ -5,6 +5,12 @@ from django.conf import settings
 # Create your models here.
 
 
+IS_READ = {
+        0: u'未读',
+        1: u'已读'
+}
+
+
 class Notification(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'标题')
     text = models.TextField(verbose_name=u'内容')
@@ -19,6 +25,9 @@ class Notification(models.Model):
                                 verbose_name=u'接收者')
     type = models.CharField(max_length=20, verbose_name=u'类型',
                             null=True, blank=True)
+
+    is_read = models.IntegerField(default=0, choices=IS_READ.items(),
+                                  verbose_name=u'是否读过')
 
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
     update_time = models.DateTimeField(u'更新时间', auto_now=True)

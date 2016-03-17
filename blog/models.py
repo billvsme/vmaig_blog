@@ -40,7 +40,7 @@ class Nav(models.Model):
                            verbose_name=u'指向地址')
 
     status = models.IntegerField(default=0, choices=STATUS.items(),
-                                 verbose_name='状态')
+                                 verbose_name=u'状态')
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
 
     class Meta:

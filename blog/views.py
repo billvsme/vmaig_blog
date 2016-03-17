@@ -43,6 +43,11 @@ class BaseMixin(object):
             # 最新评论
             context['latest_comment_list'] = \
                 Comment.objects.order_by("-create_time")[0:10]
+            # 用户未读消息数
+            user = self.request.user
+            if user.is_authenticated():
+                context['notification_count'] = \
+                    user.to_user_notification_set.filter(is_read=0).count()
         except Exception as e:
             logger.error(u'[BaseMixin]加载基本信息出错')
 
@@ -234,19 +239,32 @@ class UserView(BaseMixin, TemplateView):
 
         if slug == 'changetx':
             self.template_name = 'blog/user_changetx.html'
-            return super(UserView, self).get(request, *args, **kwargs)
         elif slug == 'changepassword':
             self.template_name = 'blog/user_changepassword.html'
-            return super(UserView, self).get(request, *args, **kwargs)
         elif slug == 'changeinfo':
             self.template_name = 'blog/user_changeinfo.html'
-            return super(UserView, self).get(request, *args, **kwargs)
         elif slug == 'message':
             self.template_name = 'blog/user_message.html'
-            return super(UserView, self).get(request, *args, **kwargs)
+        elif slug == 'notification':
+            self.template_name = 'blog/user_notification.html'
+
+        return super(UserView, self).get(request, *args, **kwargs)
 
         logger.error(u'[UserView]不存在此接口')
         raise Http404
+
+    def get_context_data(self, **kwargs):
+        context = super(UserView, self).get_context_data(**kwargs)
+
+        slug = self.kwargs.get('slug')
+
+        if slug == 'notification':
+            context['notifications'] = \
+                self.request.user.to_user_notification_set.order_by(
+                    '-create_time'
+                ).all()
+
+        return context
 
 
 class ColumnView(BaseMixin, ListView):

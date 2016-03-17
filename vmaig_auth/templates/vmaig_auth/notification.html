@@ -1,0 +1,42 @@
+<div id="notification" class="well clearfix">
+    <h2 class="underline">消息</h2>
+    <div class="list-group">
+        {% for notification in notifications%}
+            <a href="{% if notification.url %}{{notification.url}}{% else %}#{% endif %}"
+               class="list-group-item"
+               value="{{notification.id}}"
+               style="border-top-left-radius: 0px;border-top-right-radius: 0px;">
+                {{notification.title}}
+                {% if notification.is_read%}
+                    <span class="label label-info pull-right">已读</span>
+                {% else %}
+                    <span class="label label-warning pull-right">未读</span>
+                {% endif %}
+           </a> 
+        {% endfor %}
+    </div>  
+</div>
+
+<script language="javascript" type="text/javascript">
+
+    $('#notification .list-group-item').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "/usercontrol/notification",
+            data: {"notification_id":$(this).attr("value")},
+            dataType: 'json',
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));  
+            },
+            success:function(data,textStatus){
+                window.location.href = data['url'];
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.responseText);
+            }
+
+        });
+        return false;
+    });
+
+</script>

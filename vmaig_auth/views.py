@@ -13,6 +13,7 @@ from django.utils.http import (base36_to_int, is_safe_url,
                                urlsafe_base64_decode, urlsafe_base64_encode)
 from vmaig_auth.forms import VmaigUserCreationForm, VmaigPasswordRestForm
 from vmaig_auth.models import VmaigUser
+from vmaig_system.models import Notification
 import time
 import datetime
 from PIL import Image
@@ -46,6 +47,8 @@ class UserControl(View):
             return self.changetx(request)
         elif slug == "resetpassword":
             return self.resetpassword(request)
+        elif slug == "notification":
+            return self.notification(request)
 
         raise PermissionDenied
 
@@ -316,3 +319,28 @@ class UserControl(View):
                 return HttpResponse(u"上传头像错误", status=500)
 
             return HttpResponse(u"上传头像成功!\n(注意有10分钟缓存)")
+
+    def notification(self, request):
+        if not request.user.is_authenticated():
+            logger.error(u'[UserControl]用户未登陆')
+            raise PermissionDenied
+
+        notification_id = self.request.POST.get("notification_id", "")
+        notification_id = int(notification_id)
+
+        notification = Notification.objects.filter(
+            pk=notification_id
+        ).first()
+
+        if notification:
+            notification.is_read = True
+            notification.save()
+            mydict = {"url": notification.url}
+            print(mydict)
+        else:
+            mydict = {"url": '#'}
+
+        return HttpResponse(
+            json.dumps(mydict),
+            content_type="application/json"
+        )

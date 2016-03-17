@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import View
@@ -53,9 +54,10 @@ class CommentControl(View):
                 )
                 Notification.objects.create(
                     title=info,
-                    text=info,
+                    text=text,
                     from_user=user,
-                    to_user=parent.user
+                    to_user=parent.user,
+                    url='/article/'+en_title+'.html'
                 )
             except Comment.DoesNotExist:
                 logger.error(u'[CommentControl]评论引用错误:%s' % parent_str)
@@ -81,6 +83,17 @@ class CommentControl(View):
         except Exception as e:
             img = "http://vmaig.qiniudn.com/image/tx/tx-default.jpg"
 
+        print_comment = u"<p>评论：{}</p>".format(text)
+        if parent:
+            print_comment = u"<div class=\"comment-quote\">\
+                                  <p>\
+                                      <a>@{}</a>\
+                                      {}\
+                                  </p>\
+                              </div>".format(
+                                  parent.user.username,
+                                  parent.text
+                              ) + print_comment
         # 返回当前评论
         html = u"<li>\
                     <div class=\"vmaig-comment-tx\">\
@@ -88,14 +101,14 @@ class CommentControl(View):
                     </div>\
                     <div class=\"vmaig-comment-content\">\
                         <a><h1>{}</h1></a>\
-                        <p>评论：{}</p>\
+                        {}\
                         <p>{}</p>\
                     </div>\
                 </li>".format(
                     img,
                     comment.user.username,
-                    comment.text,
-                    comment.create_time.strftime("%Y-%m-%d %H:%I:%S")
+                    print_comment,
+                    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 )
 
         return HttpResponse(html)
