@@ -35,6 +35,6 @@ class Comment(models.Model):
         app_label = string_with_title('vmaig_comments', u"评论管理")
 
     def __unicode__(self):
-        return self.article.title + '_' +str(self.pk)
+        return self.article.title + '_' + str(self.pk)
 
     __str__ = __unicode__
