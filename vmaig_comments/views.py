@@ -48,7 +48,7 @@ class CommentControl(View):
             text = text[text.find(':')+2:]
             try:
                 parent = Comment.objects.get(pk=parent_id)
-                info = '{}回复了你在 {} 的评论'.format(
+                info = u'{}回复了你在 {} 的评论'.format(
                     user.username,
                     parent.article.title
                 )
