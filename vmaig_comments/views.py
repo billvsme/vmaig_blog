@@ -5,8 +5,8 @@ from django.http import HttpResponse
 from django.views.generic import View
 from django.core.exceptions import PermissionDenied
 from vmaig_comments.models import Comment
+from vmaig_system.models import Notification
 from blog.models import Article
-
 
 ArticleModel = Article
 # logger
@@ -29,13 +29,6 @@ class CommentControl(View):
                 )
             )
             return HttpResponse(u"请登陆！", status=403)
-        if not text:
-            logger.error(
-                u'[CommentControl]当前用户输入空评论:[{}]'.format(
-                    user.username
-                )
-            )
-            return HttpResponse(u"请输入评论内容！", status=403)
 
         en_title = self.kwargs.get('slug', '')
         try:
@@ -54,9 +47,27 @@ class CommentControl(View):
             text = text[text.find(':')+2:]
             try:
                 parent = Comment.objects.get(pk=parent_id)
+                info = '{}回复了你在 {} 的评论'.format(
+                    user.username,
+                    parent.article.title
+                )
+                Notification.objects.create(
+                    title=info,
+                    text=info,
+                    from_user=user,
+                    to_user=parent.user
+                )
             except Comment.DoesNotExist:
                 logger.error(u'[CommentControl]评论引用错误:%s' % parent_str)
                 return HttpResponse(u"请勿修改评论代码！", status=403)
+
+        if not text:
+            logger.error(
+                u'[CommentControl]当前用户输入空评论:[{}]'.format(
+                    user.username
+                )
+            )
+            return HttpResponse(u"请输入评论内容！", status=403)
 
         comment = Comment.objects.create(
                 user=user,
@@ -71,7 +82,7 @@ class CommentControl(View):
             img = "http://vmaig.qiniudn.com/image/tx/tx-default.jpg"
 
         # 返回当前评论
-        html = "<li>\
+        html = u"<li>\
                     <div class=\"vmaig-comment-tx\">\
                         <img src={} width=\"40\"></img>\
                     </div>\
