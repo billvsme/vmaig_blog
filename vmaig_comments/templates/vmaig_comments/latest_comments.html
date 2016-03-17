@@ -25,9 +25,9 @@
                 <div class="comment-content">
                     <a href="/article/{{comment.article.en_title}}.html">
                         {% autoescape on%}
-                        {{comment.comment|slice:"30" }}
+                        {{comment.text|slice:"30" }}
                         {% endautoescape %}
-                        {% if comment.comment|length > 30%}
+                        {% if comment.text|length > 30%}
                         ...
                         {% endif %}
                     </a>

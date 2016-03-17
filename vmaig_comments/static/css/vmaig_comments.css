@@ -1,3 +1,7 @@
+#anchor-quote:target {
+    float: left;
+    margin: -100px;
+}
 /*按钮样式*/
 .btn-vmaig-comments{
     color: #FFF;
@@ -93,3 +97,8 @@
 }
 
 /***********************/
+
+.comment-quote p{
+    border: 2px solid #EEE;
+    padding: 5px;
+}

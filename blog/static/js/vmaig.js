@@ -17,4 +17,4 @@ $(function(){
 
 /*提示的js*/
 $(function () { $("[data-toggle='tooltip']").tooltip(); });
-$('#nav-login').tooltip('hide')
+$('#nav-login').tooltip('hide');

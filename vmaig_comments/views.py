@@ -20,7 +20,7 @@ class CommentControl(View):
         # 获取当前用户
         user = self.request.user
         # 获取评论
-        comment = self.request.POST.get("comment", "")
+        text = self.request.POST.get("comment", "")
         # 判断当前用户是否是活动的用户
         if not user.is_authenticated():
             logger.error(
@@ -29,7 +29,7 @@ class CommentControl(View):
                 )
             )
             return HttpResponse(u"请登陆！", status=403)
-        if not comment:
+        if not text:
             logger.error(
                 u'[CommentControl]当前用户输入空评论:[{}]'.format(
                     user.username
@@ -46,10 +46,23 @@ class CommentControl(View):
             raise PermissionDenied
 
         # 保存评论
+        parent = None
+        if text.startswith('@['):
+            import ast
+            parent_str = text[1:text.find(':')]
+            parent_id = ast.literal_eval(parent_str)[1]
+            text = text[text.find(':')+2:]
+            try:
+                parent = Comment.objects.get(pk=parent_id)
+            except Comment.DoesNotExist:
+                logger.error(u'[CommentControl]评论引用错误:%s' % parent_str)
+                return HttpResponse(u"请勿修改评论代码！", status=403)
+
         comment = Comment.objects.create(
                 user=user,
                 article=article,
-                comment=comment,
+                text=text,
+                parent=parent
                 )
 
         try:
@@ -70,7 +83,7 @@ class CommentControl(View):
                 </li>".format(
                     img,
                     comment.user.username,
-                    comment.comment,
+                    comment.text,
                     comment.create_time.strftime("%Y-%m-%d %H:%I:%S")
                 )
 

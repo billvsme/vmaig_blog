@@ -1,3 +1,4 @@
+<div id="anchor-quote"></div>
 <div class="well">
     <div class="vmaig-comment">
         <div class="vmaig-comment-tx">
@@ -26,13 +27,24 @@
             </div>
             <div class="vmaig-comment-content">
                 <a><h1>{{comment.user.username}}</h1></a>
+                {% if comment.parent %}
+                <div class="comment-quote">
+                    <p>
+                        <a>@{{comment.parent.user.username}}：</a>
+                        {% autoescape on %}
+                        {{comment.parent.text}}
+                        {% endautoescape %}
+                    </p>
+                </div>
+                {% endif %}
+                <p></p>
                 <p>
                     评论：
-                    {% autoescape on%}
-                    {{comment.comment}}
+                    {% autoescape on %}
+                    {{comment.text}}
                     {% endautoescape %}
                 </p>
-                <p>{{comment.create_time|date:"Y-m-d H:i:s" }}</p>
+                <p>{{comment.create_time|date:"Y-m-d H:i:s" }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class='quote' href="#anchor-quote" onclick="return CommentQuote('{{comment.user.username}}',{{comment.id}});">回复</a></p>
             </div>
             </li>
             {% endfor%}
@@ -40,6 +52,13 @@
     </div>
 </div>
 <script language="javascript" type="text/javascript">
+    function CommentQuote(user_name, commend_id){
+        comment = document.getElementById('comment');
+        comment.value = "@['"+user_name+"', "+commend_id+"]: ";
+        comment.focus();;
+        comment.setSelectionRange(comment.value.length, comment.value.length);
+    };
+
     $('#vmaig-comment-form').submit(function(){
         $.ajax({
             type:"POST",

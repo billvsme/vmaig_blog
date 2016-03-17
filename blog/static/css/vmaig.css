@@ -1,4 +1,4 @@
-html, body{ overflow-x: hidden; }
+html, body{ overflow-x: hidden; overflow-y: auto;}
 
 body {
     font-family:"Microsoft YaHei","WenQuanYi Micro Hei","tohoma,sans-serif";
