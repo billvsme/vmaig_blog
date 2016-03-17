@@ -33,3 +33,8 @@ class Comment(models.Model):
         verbose_name_plural = verbose_name = u'评论'
         ordering = ['-create_time']
         app_label = string_with_title('vmaig_comments', u"评论管理")
+
+    def __unicode__(self):
+        return self.article.title + '_' +str(self.pk)
+
+    __str__ = __unicode__
