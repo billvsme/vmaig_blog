@@ -76,7 +76,7 @@ class IndexView(BaseMixin, ListView):
 
 
 class ArticleView(BaseMixin, DetailView):
-    queryset = Article.objects.filter(status=0)
+    queryset = Article.objects.filter(Q(status=0) | Q(status=1))
     template_name = 'blog/article.html'
     context_object_name = 'article'
     slug_field = 'en_title'
@@ -128,7 +128,9 @@ class AllView(BaseMixin, ListView):
         return super(AllView, self).get_context_data(**kwargs)
 
     def get_queryset(self):
-        article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        article_list = Article.objects.filter(
+            status=0
+        ).order_by("-pub_time")[0:PAGE_NUM]
         return article_list
 
     def post(self, request, *args, **kwargs):
