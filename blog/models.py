@@ -60,7 +60,7 @@ class Category(models.Model):
                                verbose_name=u'上级分类')
     rank = models.IntegerField(default=0, verbose_name=u'排序')
     status = models.IntegerField(default=0, choices=STATUS.items(),
-                                 verbose_name='状态')
+                                 verbose_name=u'状态')
 
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
 
@@ -68,6 +68,10 @@ class Category(models.Model):
         verbose_name_plural = verbose_name = u'分类'
         ordering = ['rank', '-create_time']
         app_label = string_with_title('blog', u"博客管理")
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('category-view', args=(self.name,))
 
     def __unicode__(self):
         if self.parent:
@@ -108,6 +112,10 @@ class Article(models.Model):
         ordering = ['rank', '-is_top', '-pub_time', '-create_time']
         app_label = string_with_title('blog', u"博客管理")
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('article-detail-view', args=(self.en_title,))
+
     def __unicode__(self):
             return self.title
 
@@ -127,6 +135,10 @@ class Column(models.Model):
         verbose_name_plural = verbose_name = u'专栏'
         ordering = ['-create_time']
         app_label = string_with_title('blog', u"博客管理")
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('column-view', args=(self.name,))
 
     def __unicode__(self):
         return self.name
@@ -161,3 +173,12 @@ class News(models.Model):
         verbose_name_plural = verbose_name = u'资讯'
         ordering = ['-title']
         app_label = string_with_title('blog', u"博客管理")
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('news-detail-view', args=(self.pk,))
+
+    def __unicode__(self):
+        return self.title
+
+    __str__ = __unicode__
