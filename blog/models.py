@@ -105,7 +105,11 @@ class Article(models.Model):
     update_time = models.DateTimeField(u'更新时间', auto_now=True)
 
     def get_tags(self):
-        return self.tags.split(',')
+        tags_list = self.tags.split(',')
+        while '' in tags_list:
+            tags_list.remove('')
+
+        return tags_list
 
     class Meta:
         verbose_name_plural = verbose_name = u'文章'
