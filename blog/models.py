@@ -71,7 +71,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
-        return reverse('category-view', args=(self.name,))
+        return reverse('category-detail-view', args=(self.name,))
 
     def __unicode__(self):
         if self.parent:
@@ -138,7 +138,7 @@ class Column(models.Model):
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
-        return reverse('column-view', args=(self.name,))
+        return reverse('column-detail-view', args=(self.name,))
 
     def __unicode__(self):
         return self.name

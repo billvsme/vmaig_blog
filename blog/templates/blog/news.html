@@ -35,7 +35,7 @@
         <div class="timeline-content">
 
             {% for news in timeblock%}
-            <a class="label label-{{news.get_news_from_display}} label-news " onclick="return hs.htmlExpand(this, { objectType: 'iframe' ,minWidth:600,headingText:'{{news.title}}'})" href="/news/{{news.pk}}">{{news.title}}</a>
+            <a class="label label-{{news.get_news_from_display}} label-news " onclick="return hs.htmlExpand(this, { objectType: 'iframe' ,minWidth:600,headingText:'{{news.title}}'})" href="{% url 'news-detail-view' news.pk  %}">{{news.title}}</a>
             {% endfor %}
 
         </div>

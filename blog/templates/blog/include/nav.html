@@ -1,3 +1,11 @@
+{% url 'index-view' as index_url %}
+{% url 'all-view' as all_url %}
+{% url 'news-view' as news_url %}
+{% url 'forgetpassword-view' as forgetpassword_url %}
+{% url 'user-view' 'changetx' as changetx_url%}
+{% url 'user-view' 'changepassword' as changepassword_url%}
+{% url 'user-view' 'notification' as notification_url%}
+
 <header id="vmaig-header" class="navbar navbar-inverse navbar-fixed-top navbar-vmaig">
     <div class="container">
         <div class="navbar-header">
@@ -13,19 +21,19 @@
         <div class="collapse navbar-collapse" id="vmaig-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="">
-                <a href="/">
+                <a href="{{index_url}}">
                     <span class="glyphicon glyphicon-home"></span>
                     首页
                 </a>
                 </li>
                 <li>
-                <a href="/all">
+                <a href="{{all_url}}">
                     <span class="glyphicon glyphicon-globe"></span>
                     全部文章
                 </a>
                 </li>
                 <li>
-                <a href="/news">
+                <a href="{{news_url}}">
                     <span class="glyphicon glyphicon-star-empty"></span>
                     资讯
                 </a>
@@ -61,13 +69,13 @@
                         <span class="badge" style="background-color: #D94600;">{{notification_count}}</span>
                 </a>
                 <ul class="dropdown-menu navbar-right">
-                    <li><a href="/user/changetx">
+                    <li><a href="{{changetx_url}}">
                         <span class="glyphicon glyphicon-user"></span>
                         更改头像</a></li>
-                    <li><a href="/user/changepassword">
+                    <li><a href="{{changepassword_url}}">
                         <span class="glyphicon glyphicon-lock"></span>
                         更改密码</a></li>
-                    <li><a href="/user/notification">
+                    <li><a href="{{notification_url}}">
                         <span class="glyphicon glyphicon-envelope"></span>
                         消息
                         <span class="badge" style="background-color: #D94600;">{{notification_count}}</span>
@@ -120,7 +128,7 @@
                     <button id="login-button" type="submit" class="btn btn-primary">
                         登陆
                     </button>
-                    <div id="forgetpassword"><a href="/forgetpassword/">忘记密码?&nbsp&nbsp</a></div>
+                    <div id="forgetpassword"><a href="{{forgetpassword_url}}">忘记密码?&nbsp&nbsp</a></div>
                 </form>
             </div>
         </div><!-- /.modal-content -->

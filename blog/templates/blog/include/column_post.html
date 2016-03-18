@@ -1,6 +1,9 @@
+{% url 'category-detail-view' post.category.name as category_url %}
+{% url 'article-detail-view' post.en_title as article_url %}
+
 <div class="all-post clearfix underline">
     <div class="post-title clearfix">
-        <a href="/category/{{post.category}}/">
+        <a href="{{category_url}}">
             <div class="pre-cat">
                 <div class="pre-catinner btn">
                     {{post.category}} 
@@ -9,14 +12,14 @@
                 </div>
             </div> 
         </a>
-        <h1><a href="/article/{{post.en_title}}.html">{{post.title}}</a></h1>
+        <h1><a href="{{article_url}}">{{post.title}}</a></h1>
 
         <span class="visible-xs-inline-block" style="margin-top:7px;">
             {{post.pub_time|date:"Y-m-d"}}
         </span>
         <div class="post-tags">
             {% for tag in post.get_tags%}
-            <a href="/tags/{{tag}}/">
+            <a href="{% url 'tag-detail-view' tag %}">
                 <span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>
             </a>
             {% endfor %}
@@ -26,7 +29,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <figure class="thumbnail">
-                    <a href="/article/{{post.en_title}}.html">
+                    <a href="{% url 'tag-detail-view' tag %}">
                         <img src="/static/vmaig.png"  height="400" alt="">
                     </a>
                 </figure> 

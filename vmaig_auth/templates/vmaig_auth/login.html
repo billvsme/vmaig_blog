@@ -1,3 +1,6 @@
+{% url 'forgetpassword-view' as forgetpassword_url %}
+{% url 'register-view' as register_url %}
+
 <div id="vmaig-auth-login">
     <div class="panel panel-vmaig-auth">
         <div class="panel-heading">
@@ -21,9 +24,9 @@
                     <input id="vmaig-auth-login-password" type="password" class="form-control">
                 </div>
             </div>
-            <div id="vmaig-auth-forgetpassword"><a href="/forgetpassword/">忘记密码?</a></div>
+            <div id="vmaig-auth-forgetpassword"><a href="{{forgetpassword_url}}">忘记密码?</a></div>
             <button id="vmaig-auth-login-button" type="submit" class="btn btn-vmaig-auth pull-left">登录</button>
-            <a href="/register" type="button" class="btn btn-vmaig-auth pull-right">注册</a>
+            <a href="{{register_url}}" type="button" class="btn btn-vmaig-auth pull-right">注册</a>
         </form>
     </div>
 </div>
