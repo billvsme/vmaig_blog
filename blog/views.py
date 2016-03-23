@@ -16,7 +16,7 @@ from vmaig_comments.models import Comment
 from vmaig_auth.models import VmaigUser
 from vmaig_system.models import Link
 from vmaig_auth.forms import VmaigUserCreationForm, VmaigPasswordRestForm
-from vmaig_blog.settings import PAGE_NUM
+from django.conf import settings
 import datetime
 import time
 import json
@@ -36,6 +36,9 @@ class BaseMixin(object):
     def get_context_data(self, *args, **kwargs):
         context = super(BaseMixin, self).get_context_data(**kwargs)
         try:
+            # 网站标题等内容
+            context['website_title'] = settings.WEBSITE_TITLE
+            context['website_welcome'] = settings.WEBSITE_WELCOME
             # 热门文章
             context['hot_article_list'] = \
                 Article.objects.order_by("-view_times")[0:10]
@@ -63,7 +66,7 @@ class BaseMixin(object):
 class IndexView(BaseMixin, ListView):
     template_name = 'blog/index.html'
     context_object_name = 'article_list'
-    paginate_by = PAGE_NUM  # 分页--每页的数目
+    paginate_by = settings.PAGE_NUM  # 分页--每页的数目
 
     def get_context_data(self, **kwargs):
         # 轮播
@@ -124,20 +127,20 @@ class AllView(BaseMixin, ListView):
 
     def get_context_data(self, **kwargs):
         kwargs['category_list'] = Category.objects.all()
-        kwargs['PAGE_NUM'] = PAGE_NUM
+        kwargs['PAGE_NUM'] = settings.PAGE_NUM
         return super(AllView, self).get_context_data(**kwargs)
 
     def get_queryset(self):
         article_list = Article.objects.filter(
             status=0
-        ).order_by("-pub_time")[0:PAGE_NUM]
+        ).order_by("-pub_time")[0:settings.PAGE_NUM]
         return article_list
 
     def post(self, request, *args, **kwargs):
         val = self.request.POST.get("val", "")
         sort = self.request.POST.get("sort", "time")
         start = self.request.POST.get("start", 0)
-        end = self.request.POST.get("end", PAGE_NUM)
+        end = self.request.POST.get("end", settings.PAGE_NUM)
 
         start = int(start)
         end = int(end)
@@ -183,7 +186,7 @@ class AllView(BaseMixin, ListView):
 class SearchView(BaseMixin, ListView):
     template_name = 'blog/search.html'
     context_object_name = 'article_list'
-    paginate_by = PAGE_NUM
+    paginate_by = settings.PAGE_NUM
 
     def get_context_data(self, **kwargs):
         kwargs['s'] = self.request.GET.get('s', '')
@@ -207,7 +210,7 @@ class SearchView(BaseMixin, ListView):
 class TagView(BaseMixin, ListView):
     template_name = 'blog/tag.html'
     context_object_name = 'article_list'
-    paginate_by = PAGE_NUM
+    paginate_by = settings.PAGE_NUM
 
     def get_queryset(self):
         tag = self.kwargs.get('tag', '')
@@ -220,7 +223,7 @@ class TagView(BaseMixin, ListView):
 class CategoryView(BaseMixin, ListView):
     template_name = 'blog/category.html'
     context_object_name = 'article_list'
-    paginate_by = PAGE_NUM
+    paginate_by = settings.PAGE_NUM
 
     def get_queryset(self):
         category = self.kwargs.get('category', '')
@@ -279,7 +282,7 @@ class ColumnView(BaseMixin, ListView):
     queryset = Column.objects.all()
     template_name = 'blog/column.html'
     context_object_name = 'article_list'
-    paginate_by = PAGE_NUM
+    paginate_by = settings.PAGE_NUM
 
     def get_context_data(self, **kwargs):
         column = self.kwargs.get('column', '')

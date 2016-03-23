@@ -16,6 +16,10 @@ import os
 
 
 env = {
+    'WEBSITE_TITLE': u'{}'.format(os.environ.get('WEBSITE_TITLE', u'Vmaig')),
+    'WEBSITE_WELCOME': u'{}'.format(
+        os.environ.get('WEBSITE_WELCOME', u'欢迎来到Vmaig')
+    ),
     'DATABAE_ENGINE': os.environ.get(
         'DATABAE_ENGINE',
         'django.db.backends.postgresql_psycopg2'
@@ -49,7 +53,9 @@ env = {
     'EMAIL_PORT': int(os.environ.get('EMAIL_PORT', 25)),
     'EMAIL_HOST_USER': os.environ.get('EMAIL_HOST_USER', ''),
     'EMAIL_HOST_PASSWORD': os.environ.get('EMAIL_HOST_PASSWORD', ''),
-    'EMAIL_SUBJECT_PREFIX': os.environ.get('EMAIL_SUBJECT_PREFIX', u'vmaig'),
+    'EMAIL_SUBJECT_PREFIX': u'{}'.format(
+        os.environ.get('EMAIL_SUBJECT_PREFIX', u'vmaig')
+    ),
     'QINIU_ACCESS_KEY': os.environ.get('QINIU_ACCESS_KEY', ''),
     'QINIU_SECRET_KEY': os.environ.get('QINIU_SECRET_KEY', ''),
     'QINIU_BUCKET_NAME': os.environ.get('QINIU_BUCKET_NAME', ''),
@@ -265,3 +271,7 @@ QINIU_ACCESS_KEY = env['QINIU_ACCESS_KEY']
 QINIU_SECRET_KEY = env['QINIU_SECRET_KEY']
 QINIU_BUCKET_NAME = env['QINIU_BUCKET_NAME']
 QINIU_URL = env['QINIU_URL']
+
+# 网站标题等内容配置
+WEBSITE_TITLE = env['WEBSITE_TITLE']
+WEBSITE_WELCOME = env['WEBSITE_WELCOME']
