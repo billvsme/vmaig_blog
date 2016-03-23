@@ -52,7 +52,7 @@ env = {
     'EMAIL_SUBJECT_PREFIX': os.environ.get('EMAIL_SUBJECT_PREFIX', u'vmaig'),
     'QINIU_ACCESS_KEY': os.environ.get('QINIU_ACCESS_KEY', ''),
     'QINIU_SECRET_KEY': os.environ.get('QINIU_SECRET_KEY', ''),
-    'QINIU_BUCKET_NAME': os.environ.get('QINIU_BUCKET_NAME', '')
+    'QINIU_BUCKET_NAME': os.environ.get('QINIU_BUCKET_NAME', ''),
     'QINIU_URL': os.environ.get('QINIU_URL', '')
 }
 
