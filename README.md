@@ -113,8 +113,8 @@ http://vmaig.com
 使用docker部署，首先pull下来image或者自己使用项目中Dockerfile或者Dockerfile_cn build。
 	
 	sudo docker pull billvsme/vmaig_blog
-然后运行image
-	例子：
+然后运行image  
+	例子:
 	
 	sudo docker run -d -p 80:80 --name vmaig\
                             -e WEBSITE_TITLE='Vmaig'\
@@ -131,7 +131,7 @@ http://vmaig.com
                             -e QINIU_BUCKET_NAME='your_bucket_name'\
                             billvsme/vmaig_blog
     
-环境变量：
+环境变量:  
 其中：EMAIL_HOST，EMAIL_PORT，EMAIL_HOST_USER，EMAIL_HOST_PASSWORD是必须的，如果不指定，用户注册不了
 
 	WEBSITE_TITLE  网站的title
@@ -150,7 +150,7 @@ http://vmaig.com
 	QINIU_BUCKET_NAME  七牛的bucket
 	QINIU_URL  七牛的url
 	
-运行后。默认管理员用户名为 admin，密码为 password ， 请登录 http://your-domain/admin 更改密码。                   
+运行后，默认管理员用户名为 admin，密码为 password ， 请登录 http://your-domain/admin 更改密码。                   
 
 #接下来该干什么？
 在浏览器中输入 http://127.0.0.1:8000/admin  
