@@ -16,10 +16,8 @@ import os
 
 
 env = {
-    'WEBSITE_TITLE': u'{}'.format(os.environ.get('WEBSITE_TITLE', u'Vmaig')),
-    'WEBSITE_WELCOME': u'{}'.format(
-        os.environ.get('WEBSITE_WELCOME', u'欢迎来到Vmaig')
-    ),
+    'WEBSITE_TITLE': os.environ.get('WEBSITE_TITLE', u'Vmaig'),
+    'WEBSITE_WELCOME': os.environ.get('WEBSITE_WELCOME', u'欢迎来到Vmaig'),
     'DATABAE_ENGINE': os.environ.get(
         'DATABAE_ENGINE',
         'django.db.backends.postgresql_psycopg2'
@@ -53,9 +51,7 @@ env = {
     'EMAIL_PORT': int(os.environ.get('EMAIL_PORT', 25)),
     'EMAIL_HOST_USER': os.environ.get('EMAIL_HOST_USER', ''),
     'EMAIL_HOST_PASSWORD': os.environ.get('EMAIL_HOST_PASSWORD', ''),
-    'EMAIL_SUBJECT_PREFIX': u'{}'.format(
-        os.environ.get('EMAIL_SUBJECT_PREFIX', u'vmaig')
-    ),
+    'EMAIL_SUBJECT_PREFIX': os.environ.get('EMAIL_SUBJECT_PREFIX', u'vmaig'),
     'QINIU_ACCESS_KEY': os.environ.get('QINIU_ACCESS_KEY', ''),
     'QINIU_SECRET_KEY': os.environ.get('QINIU_SECRET_KEY', ''),
     'QINIU_BUCKET_NAME': os.environ.get('QINIU_BUCKET_NAME', ''),
