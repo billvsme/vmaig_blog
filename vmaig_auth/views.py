@@ -288,7 +288,8 @@ class UserControl(View):
 
             # 图片连接加上 v?时间  是因为七牛云缓存，图片不能很快的更新，
             # 用filename?v201504261312的形式来获取最新的图片
-            request.user.img = "http://vmaig.qiniudn.com/{}?v{}".format(
+            request.user.img = "http://{}/{}?v{}".format(
+                settings.QINIU_URL,
                 filename,
                 time.strftime('%Y%m%d%H%M%S')
             )

@@ -53,6 +53,7 @@ env = {
     'QINIU_ACCESS_KEY': os.environ.get('QINIU_ACCESS_KEY', ''),
     'QINIU_SECRET_KEY': os.environ.get('QINIU_SECRET_KEY', ''),
     'QINIU_BUCKET_NAME': os.environ.get('QINIU_BUCKET_NAME', '')
+    'QINIU_URL': os.environ.get('QINIU_URL', '')
 }
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -263,3 +264,4 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 QINIU_ACCESS_KEY = env['QINIU_ACCESS_KEY']
 QINIU_SECRET_KEY = env['QINIU_SECRET_KEY']
 QINIU_BUCKET_NAME = env['QINIU_BUCKET_NAME']
+QINIU_URL = env['QINIU_URL']
