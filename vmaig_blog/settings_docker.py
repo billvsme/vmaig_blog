@@ -14,6 +14,47 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+
+env = {
+    'DATABAE_ENGINE': os.environ.get(
+        'DATABAE_ENGINE',
+        'django.db.backends.postgresql_psycopg2'
+    ),
+    'DATABASE_NAME': os.environ.get(
+        'DATABASE_NAME',
+        'db_vmaig'
+    ),
+    'DATABA_USER': os.environ.get(
+        'DATABASE_USER',
+        'vmaig'
+    ),
+    'DATABASE_PASSWORD': os.environ.get(
+        'DATABASE_PASSWORD',
+        'password'
+    ),
+    'DATABASE_HOST': os.environ.get(
+        'DATABASE_HOST',
+        'localhost'
+    ),
+    'DATABASE_PORT': int(os.environ.get(
+        'DATABASE_PORT',
+        5432
+    )),
+    'PAGE_NUM': int(os.environ.get('PAGE_NUM', 10)),
+    'EMAIL_BACKEND': os.environ.get(
+        'EMAIL_BACKEND',
+        'django.core.mail.backends.smtp.EmailBackend'
+    ),
+    'EMAIL_HOST': os.environ.get('EMAIL_HOST', ''),
+    'EMAIL_PORT': int(os.environ.get('EMAIL_PORT', 25)),
+    'EMAIL_HOST_USER': os.environ.get('EMAIL_HOST_USER', ''),
+    'EMAIL_HOST_PASSWORD': os.environ.get('EMAIL_HOST_PASSWORD', ''),
+    'EMAIL_SUBJECT_PREFIX': os.environ.get('EMAIL_SUBJECT_PREFIX', u'vmaig'),
+    'QINIU_ACCESS_KEY': os.environ.get('QINIU_ACCESS_KEY', ''),
+    'QINIU_SECRET_KEY': os.environ.get('QINIU_SECRET_KEY', ''),
+    'QINIU_BUCKET_NAME': os.environ.get('QINIU_BUCKET_NAME', '')
+}
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -83,12 +124,12 @@ WSGI_APPLICATION = 'vmaig_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_vmaig',
-        'USER': 'vmaig',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': env['DATABAE_ENGINE'],
+        'NAME': env['DATABASE_NAME'],
+        'USER': env['DATABA_USER'],
+        'PASSWORD': env['DATABASE_PASSWORD'],
+        'HOST': env['DATABASE_HOST'],
+        'PORT': env['DATABASE_PORT']
     }
 }
 
@@ -204,21 +245,21 @@ CACHES = {
 
 
 # 分页配置
-PAGE_NUM = 10
+PAGE_NUM = env['PAGE_NUM']
 
 # email配置
 # 如果想要支持ssl (比如qq邮箱) 见 https://github.com/bancek/django-smtp-ssl
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = ''                       # SMTP地址 例如: smtp.163.com
-EMAIL_PORT = 25                       # SMTP端口 例如: 25
-EMAIL_HOST_USER = ''                  # 我自己的邮箱 例如: xxxxxx@163.com
-EMAIL_HOST_PASSWORD = ''              # 我的邮箱密码 例如  xxxxxxxxx
-EMAIL_SUBJECT_PREFIX = u'vmaig'       # 为邮件Subject-line前缀,默认是'[django]'
-EMAIL_USE_TLS = True                  # 与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false
+EMAIL_BACKEND = env['EMAIL_BACKEND']
+EMAIL_HOST = env['EMAIL_HOST']
+EMAIL_PORT = env['EMAIL_PORT']
+EMAIL_HOST_USER = env['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = env['EMAIL_HOST_PASSWORD']
+EMAIL_SUBJECT_PREFIX = env['EMAIL_SUBJECT_PREFIX']
+EMAIL_USE_TLS = True
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # 七牛配置
-QINIU_ACCESS_KEY = ''
-QINIU_SECRET_KEY = ''
-QINIU_BUCKET_NAME = ''
+QINIU_ACCESS_KEY = env['QINIU_ACCESS_KEY']
+QINIU_SECRET_KEY = env['QINIU_SECRET_KEY']
+QINIU_BUCKET_NAME = env['QINIU_BUCKET_NAME']
