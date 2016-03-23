@@ -108,7 +108,7 @@ http://vmaig.com
     python manage.py runserver
     
     
-# 生成环境部署
+# 生产环境部署
 	
 使用docker部署，首先pull下来image或者自己使用项目中Dockerfile或者Dockerfile_cn build。
 	
@@ -131,7 +131,7 @@ http://vmaig.com
                             -e QINIU_BUCKET_NAME='your_bucket_name'\
                             billvsme/vmaig_blog
     
-环境变量:  
+**环境变量**:  
 其中：EMAIL_HOST，EMAIL_PORT，EMAIL_HOST_USER，EMAIL_HOST_PASSWORD是必须的，如果不指定，用户注册不了
 
 	WEBSITE_TITLE  网站的title
