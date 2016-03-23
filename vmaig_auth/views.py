@@ -66,7 +66,7 @@ class UserControl(View):
         if user is not None:
             auth.login(request, user)
         else:
-            errors.append("密码或者用户名不正确")
+            errors.append(u"密码或者用户名不正确")
 
         mydict = {"errors": errors}
         return HttpResponse(
@@ -171,7 +171,7 @@ class UserControl(View):
                     'token_generator': token_generator,
                     'from_email': from_email,
                     'request': request,
-                    }
+                   }
             user = form.save(**opts)
 
         else:
@@ -223,7 +223,7 @@ class UserControl(View):
                 )
             )
             return HttpResponse(
-                "密码重设失败!\n密码重置链接无效，可能是因为它已使用。可以请求一次新的密码重置.",
+                u"密码重设失败!\n密码重置链接无效，可能是因为它已使用。可以请求一次新的密码重置.",
                 status=403
             )
 
