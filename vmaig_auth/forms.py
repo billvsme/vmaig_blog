@@ -2,11 +2,10 @@
 from django import forms
 from vmaig_auth.models import VmaigUser
 from django.contrib.auth.tokens import default_token_generator
-import django
-if django.__version__>'1.9':
-  from django.contrib.sites.shortcuts import get_current_site
-else:
-  from django.contrib.sites.models import get_current_site
+try:
+    from django.contrib.sites.shortcuts import get_current_site
+except:
+    from django.contrib.sites.models import get_current_site
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.core.mail import send_mail
