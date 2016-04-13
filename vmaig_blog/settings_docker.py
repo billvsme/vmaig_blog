@@ -16,6 +16,7 @@ import os
 
 
 env = {
+    'SECRET_KEY': os.environ.get('SECRET_KEY', 'I use vmaig'),
     'WEBSITE_TITLE': os.environ.get('WEBSITE_TITLE', u'Vmaig'),
     'WEBSITE_WELCOME': os.environ.get('WEBSITE_WELCOME', u'欢迎来到Vmaig'),
     'DATABAE_ENGINE': os.environ.get(
@@ -65,7 +66,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p1p2e^77+6ex*1@-s6hzcx7l3bx#g2q0w1za1c-x-1p@n6z^x*'
+SECRET_KEY = env['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
