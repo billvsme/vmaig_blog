@@ -118,6 +118,7 @@ http://vmaig.com
 	
 	sudo docker run -d -p 80:80 --name vmaig\
                             -e WEBSITE_TITLE='Vmaig'\
+                            -e SECRET_KEY='django secret key'\
                             -e WEBSITE_WELCOME='欢迎来到vmaig'\
                             -e EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend' \
                             -e EMAIL_HOST='smtp.163.com'\
