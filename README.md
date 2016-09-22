@@ -49,12 +49,12 @@ http://vmaig.com
 
     virtualenv www
     cd www
-    source bin/acitve
+    source bin/active
 
 下载代码,切换目录 :
     
     git clone https://github.com/billvsme/vmaig_blog
-    cd vmaig_bolg
+    cd vmaig_blog
 
 首先安装相关Pillow 用到的c库 :
 (详见https://pillow.readthedocs.org/en/3.1.x/installation.html#building-on-linux)
