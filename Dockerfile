@@ -28,6 +28,7 @@ RUN service postgresql start &&\
     psql --command "create database db_vmaig owner vmaig;"
 
 USER root
+RUN mkdir -p /var/log/vmaig
 RUN service postgresql start &&\
     sleep 10 &&\
     python manage.py makemigrations --settings vmaig_blog.settings_docker &&\
