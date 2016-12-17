@@ -5,3 +5,4 @@
 tx_*.jpg
 */migrations/*
 *.swp
+*.un~
