@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y vim
 RUN apt-get install -y nginx
-RUN apt-get install -y postgresql
+RUN apt-get install -y postgresql-9.3
 RUN apt-get install -y memcached
 RUN apt-get install -y python-dev python-setuptools
 # RUN apt-get install -y python3
@@ -22,6 +22,7 @@ RUN pip install -r requirements.txt -i http://pypi.douban.com/simple/
 RUN apt-get install -y libpq-dev
 RUN pip install psycopg2 -i http://pypi.douban.com/simple/
 RUN pip install gunicorn
+
 
 USER postgres
 RUN service postgresql start &&\
@@ -43,5 +44,9 @@ RUN pip install supervisor -i http://pypi.douban.com/simple/
 COPY supervisord.conf /etc/supervisord.conf
 
 RUN mkdir /var/log/supervisor
+
+VOLUME /var/lib/postgresql/
+VOLUME /var/log/vmaig/
+
 CMD supervisord -c /etc/supervisord.conf
 EXPOSE 80

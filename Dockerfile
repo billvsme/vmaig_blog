@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y vim
 RUN apt-get install -y nginx
-RUN apt-get install -y postgresql
+RUN apt-get install -y postgresql-9.3
 RUN apt-get install -y memcached
 RUN apt-get install -y python-dev python-setuptools
 # RUN apt-get install -y python3
@@ -42,5 +42,9 @@ RUN pip install supervisor
 COPY supervisord.conf /etc/supervisord.conf
 
 RUN mkdir /var/log/supervisor
+
+VOLUME /var/lib/postgresql/
+VOLUME /var/log/vmaig/
+
 CMD supervisord -c /etc/supervisord.conf
 EXPOSE 80

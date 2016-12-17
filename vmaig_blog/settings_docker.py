@@ -164,7 +164,7 @@ AUTH_USER_MODEL = "vmaig_auth.VmaigUser"
 
 
 # log配置
-LOG_FILE = "./all.log"
+LOG_FILE = "/var/log/vmaig/all.log"
 
 LOGGING = {
         'version': 1,
