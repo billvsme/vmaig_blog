@@ -32,7 +32,7 @@ vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博
 9. 支持**手机浏览**，对手机浏览进行了调整。
 
 #Demo
-http://vmaig.com   
+https://vmaig.com   
 
 #预览
 ![首页](http://vmaig.qiniudn.com/screenshot/vmaig_01.jpg)
