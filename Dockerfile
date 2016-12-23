@@ -49,3 +49,4 @@ VOLUME /var/log/vmaig/
 
 CMD supervisord -c /etc/supervisord.conf
 EXPOSE 80
+EXPOSE 443
