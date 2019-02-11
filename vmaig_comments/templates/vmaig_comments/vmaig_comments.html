@@ -5,7 +5,7 @@
             {% if user.img%}
             <img src="{{user.img}}" width="40"></img>
             {%else%}
-            <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>
+            <img src="/static/tx/default.jpg" width="40"></img>
             {%endif%}
         </div>
         <div class="vmaig-comment-edit clearfix">
@@ -22,7 +22,7 @@
                 {% if comment.user.img %}
                 <img src={{comment.user.img}} width="40"></img>
                 {%else%}
-                <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>
+                <img src="/static/tx/default.jpg" width="40"></img>
                 {%endif%}
             </div>
             <div class="vmaig-comment-content">
