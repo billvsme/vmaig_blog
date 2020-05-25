@@ -26,7 +26,7 @@ SECRET_KEY = 'p1p2e^77+6ex*1@-s6hzcx7l3bx#g2q0w1za1c-x-1p@n6z^x*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -95,6 +95,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = '/vmaig_blog/static/'
 
 # 设置user model
 AUTH_USER_MODEL = "vmaig_auth.VmaigUser"
@@ -185,4 +187,4 @@ QINIU_URL = ''
 
 # 网站标题等内容配置
 WEBSITE_TITLE = u'Vmaig'
-WEBSITE_WELCOME = u'欢迎来到Vmaig'
+WEBSITE_WELCOME = u'欢迎来到Vmaig，有问题欢迎加qq群458788510'
