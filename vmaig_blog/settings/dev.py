@@ -5,6 +5,8 @@ from .base import *
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+WSGI_APPLICATION = 'vmaig_blog.wsgi_dev.application'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
