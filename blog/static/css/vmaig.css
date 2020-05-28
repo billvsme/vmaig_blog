@@ -445,7 +445,7 @@ footer {
 .hotest-post-title{
     display:inline-block;
     overflow:hidden;
-    width:80%;
+    width:78%;
     white-space:nowrap;
     text-overflow:ellipsis;
 }
