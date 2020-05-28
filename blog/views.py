@@ -320,6 +320,10 @@ class NewsView(BaseMixin, TemplateView):
 
         start_date = datetime.datetime.now()
 
+        last_new = News.objects.order_by("-pub_time").first()
+        if last_new is not None:
+            start_date = last_new.pub_time
+
         # 获取url中时间断的资讯
         for x in range(start_day, end_day+1):
             date = start_date - datetime.timedelta(x)
