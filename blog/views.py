@@ -8,6 +8,7 @@ from django.views.generic import View, TemplateView, ListView, DetailView
 from django.db.models import Q
 from django.core.cache import caches
 from django.core.exceptions import PermissionDenied
+from django.core.cache.backends.base import InvalidCacheBackendError
 from django.contrib import auth
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
@@ -25,7 +26,7 @@ import logging
 # 缓存
 try:
     cache = caches['memcache']
-except ImportError as e:
+except InvalidCacheBackendError as e:
     cache = caches['default']
 
 # logger
