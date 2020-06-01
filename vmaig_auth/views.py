@@ -8,7 +8,10 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import auth
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.sites.models import get_current_site
+try:
+    from django.contrib.sites.shortcuts import get_current_site
+except:
+    from django.contrib.sites.models import get_current_site
 from django.utils.http import (base36_to_int, is_safe_url,
                                urlsafe_base64_decode, urlsafe_base64_encode)
 from vmaig_auth.forms import VmaigUserCreationForm, VmaigPasswordRestForm
