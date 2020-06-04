@@ -20,7 +20,7 @@ vmaig qq群: 458788510
 2020/6/04 从django1.8 升级到 django2.2
 
 # 概述
-vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。https://vmaig.com 就是基于vmaig\_blog 搭建的。
+vmaig\_blog 是一个基于  **Django2.2**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。https://vmaig.com 就是基于vmaig\_blog 搭建的。
 # 功能
 1. 文章,分类,专栏的添加，删除，修改。支持**tinymce**富文本编辑器。支持文章中代码**高亮**。
 2. 实现**用户注册,登陆,修改密码,忘记重置密码**。通过**邮箱**通知注册用户, 用户忘记密码基于邮件（需要在setting.py设置好邮箱)。
