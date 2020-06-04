@@ -55,7 +55,7 @@ class BaseMixin(object):
                 link.color = colors[index % len(colors)]
             # 用户未读消息数
             user = self.request.user
-            if user.is_authenticated():
+            if user.is_authenticated:
                 context['notification_count'] = \
                     user.to_user_notification_set.filter(is_read=0).count()
         except Exception as e:
@@ -243,7 +243,7 @@ class UserView(BaseMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
 
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             logger.error(u'[UserView]用户未登陆')
             return render(request, 'blog/login.html')
 

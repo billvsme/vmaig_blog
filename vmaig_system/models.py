@@ -19,10 +19,10 @@ class Notification(models.Model):
     from_user = models.ForeignKey(settings.AUTH_USER_MODEL,
                                   default=None, blank=True, null=True,
                                   related_name='from_user_notification_set',
-                                  verbose_name=u'发送者')
+                                  verbose_name=u'发送者', on_delete=models.DO_NOTHING)
     to_user = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 related_name='to_user_notification_set',
-                                verbose_name=u'接收者')
+                                verbose_name=u'接收者', on_delete=models.DO_NOTHING)
     type = models.CharField(max_length=20, verbose_name=u'类型',
                             null=True, blank=True)
 

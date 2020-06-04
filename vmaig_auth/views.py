@@ -8,7 +8,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import auth
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.sites.models import get_current_site
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import (base36_to_int, is_safe_url,
                                urlsafe_base64_decode, urlsafe_base64_encode)
 from vmaig_auth.forms import VmaigUserCreationForm, VmaigPasswordRestForm
@@ -75,7 +75,7 @@ class UserControl(View):
         )
 
     def logout(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             logger.error(u'[UserControl]用户未登陆')
             raise PermissionDenied
         else:
@@ -132,7 +132,7 @@ class UserControl(View):
         )
 
     def changepassword(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             logger.error(u'[UserControl]用户未登陆')
             raise PermissionDenied
 
@@ -228,7 +228,7 @@ class UserControl(View):
             )
 
     def changetx(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             logger.error(u'[UserControl]用户未登陆')
             raise PermissionDenied
 
@@ -247,7 +247,8 @@ class UserControl(View):
         filename = "tx_100x100_{}.jpg".format(request.user.id)
         filedir = "vmaig_auth/static/tx/"
         static_root = getattr(settings, 'STATIC_ROOT', None)
-        if static_root:
+        debug = getattr(settings, 'DEBUG', None)
+        if static_root and not debug:
             filedir = os.path.join(static_root, 'tx')
         if not os.path.exists(filedir):
             os.makedirs(filedir)
@@ -322,7 +323,7 @@ class UserControl(View):
             return HttpResponse(u"上传头像成功!\n(注意有10分钟缓存)")
 
     def notification(self, request):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             logger.error(u'[UserControl]用户未登陆')
             raise PermissionDenied
 

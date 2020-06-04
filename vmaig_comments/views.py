@@ -23,7 +23,7 @@ class CommentControl(View):
         # 获取评论
         text = self.request.POST.get("comment", "")
         # 判断当前用户是否是活动的用户
-        if not user.is_authenticated():
+        if not user.is_authenticated:
             logger.error(
                 u'[CommentControl]当前用户非活动用户:[{}]'.format(
                     user.username

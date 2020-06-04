@@ -57,7 +57,7 @@ class Nav(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=40, verbose_name=u'名称')
     parent = models.ForeignKey('self', default=None, blank=True, null=True,
-                               verbose_name=u'上级分类')
+                               verbose_name=u'上级分类', on_delete=models.DO_NOTHING)
     rank = models.IntegerField(default=0, verbose_name=u'排序')
     status = models.IntegerField(default=0, choices=STATUS.items(),
                                  verbose_name=u'状态')
@@ -83,8 +83,8 @@ class Category(models.Model):
 
 
 class Article(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=u'作者')
-    category = models.ForeignKey(Category, verbose_name=u'分类')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=u'作者', on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, verbose_name=u'分类', on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=100, verbose_name=u'标题')
     en_title = models.CharField(max_length=100, verbose_name=u'英文标题')
     img = models.CharField(max_length=200,
@@ -155,7 +155,7 @@ class Carousel(models.Model):
     summary = models.TextField(blank=True, null=True, verbose_name=u'摘要')
     img = models.CharField(max_length=200, verbose_name=u'轮播图片',
                            default='/static/img/carousel/default.jpg')
-    article = models.ForeignKey(Article, verbose_name=u'文章')
+    article = models.ForeignKey(Article, verbose_name=u'文章', on_delete=models.DO_NOTHING)
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
 
     class Meta:

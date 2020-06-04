@@ -21,13 +21,13 @@ class string_with_title(str):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=u'用户')
-    article = models.ForeignKey(Article, verbose_name=u'文章')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=u'用户', on_delete=models.DO_NOTHING)
+    article = models.ForeignKey(Article, verbose_name=u'文章', on_delete=models.DO_NOTHING)
     text = models.TextField(verbose_name=u'评论内容')
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
 
     parent = models.ForeignKey('self', default=None, blank=True, null=True,
-                               verbose_name=u'引用')
+                               verbose_name=u'引用', on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name_plural = verbose_name = u'评论'

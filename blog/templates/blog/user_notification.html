@@ -1,4 +1,4 @@
-{% extends "./blog/base.html"%}
+{% extends "blog/base.html"%}
  
 {% block main%}
 
@@ -37,7 +37,7 @@
         </a>
     </div>
     <div class="col-md-10">
-        {%include "./vmaig_auth/notification.html"%}
+        {%include "vmaig_auth/notification.html"%}
     </div>
 </div>
 {%endblock%}
