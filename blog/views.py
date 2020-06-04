@@ -25,7 +25,7 @@ import logging
 
 # 缓存
 try:
-    cache = caches['memcache']
+    cache = caches['redis']
 except InvalidCacheBackendError as e:
     cache = caches['default']
 
