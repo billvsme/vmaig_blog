@@ -105,7 +105,7 @@ class Article(models.Model):
     update_time = models.DateTimeField(u'更新时间', auto_now=True)
 
     def get_tags(self):
-        tags_list = self.tags.split(',')
+        tags_list = (self.tags or "").split(',')
         while '' in tags_list:
             tags_list.remove('')
 
