@@ -17,6 +17,7 @@ vmaig qq群: 458788510
 2015/7/5 对xadmin分支中的错误进行了比较大的修改  
 2016/3/17 添加评论回复  
 2016/3/22 添加Dockerfile，使用Docker部署本博客  
+2020/6/04 从django1.8 升级到 django2.2
 
 # 概述
 vmaig\_blog 是一个基于  **Django1.8**  跟  **Bootstrap3**  开发的 **博客系统** ，实现了一个博客完整的功能。https://vmaig.com 就是基于vmaig\_blog 搭建的。
