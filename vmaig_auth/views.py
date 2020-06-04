@@ -262,7 +262,7 @@ class UserControl(View):
 
         # 修改头像分辨率
         im = Image.open(path)
-        out = im.resize((100, 100), Image.ANTIALIAS)
+        out = im.convert('RGB').resize((100, 100), Image.ANTIALIAS)
         out.save(path)
 
         # 选择上传头像到七牛还是本地
