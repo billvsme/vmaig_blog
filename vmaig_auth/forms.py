@@ -166,6 +166,6 @@ class VmaigPasswordRestForm(forms.Form):
         except Exception as e:
             logger.error(
                 u'[UserControl]用户重置密码邮件发送失败:[{}]/[{}]'.format(
-                    username, email
+                    self.user.username, email
                 )
             )
