@@ -141,7 +141,7 @@ class VmaigPasswordRestForm(forms.Form):
         domain = current_site.domain
         uid = base64.urlsafe_b64encode(
             force_bytes(self.user.pk)
-        ).rstrip(b'\n=')
+        ).rstrip(b'\n=').decode('utf-8')
         token = token_generator.make_token(self.user)
         protocol = 'http'
 
