@@ -174,8 +174,8 @@ class AllView(BaseMixin, ListView):
         html = ""
         for article in article_list:
             html += template.loader.get_template(
-                        'blog/include/all_post.html'
-                    ).render(template.Context({'post': article}))
+                'blog/include/all_post.html'
+            ).render({'post': article})
 
         mydict = {"html": html, "isend": isend}
         return HttpResponse(
