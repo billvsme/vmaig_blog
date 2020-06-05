@@ -1,3 +1,4 @@
+{% load compress %}
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -7,19 +8,23 @@
     <title>{{website_title}}</title>
     <link rel="shortcut icon" href="/static/img/favicon.ico"/>
     <link rel="bookmark" href="/static/img/favicon.ico"/>
+    {% compress css %}
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/vmaig.css">
     <link rel="stylesheet" href="/static/css/vmaig_comments.css">
     <link rel="stylesheet" href="/static/css/vmaig_auth.css">
     <link rel="stylesheet" href="/static/jquery/jquery.Jcrop.min.css">
+    {% block css%} {% endblock%}
+    {% endcompress %}
 
+    {% compress js %}
     <script src="/static/jquery/jquery-2.1.3.min.js"></script>
     <script src="/static/jquery/jquery.cookie.js"></script>
     <script src="/static/jquery/jquery.form.js"></script>
     <script src="/static/jquery/jquery.Jcrop.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    {% endcompress %}
 
-    {% block css%} {% endblock%}
 </head>
 <body id="vmaig">
     <!-- 导航栏 -->
@@ -38,8 +43,9 @@
 
 </body>
 
-
+{% compress js %}
 <script type="text/javascript" src="/static/js/vmaig.js"></script>
 {% block js%}{% endblock%}
+{% endcompress %}
 
 </html>

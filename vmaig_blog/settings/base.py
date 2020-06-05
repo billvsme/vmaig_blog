@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.sites',
 
+    'compressor',
+
     'blog',
     'vmaig_auth',
     'vmaig_comments',
@@ -99,6 +101,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = '/opt/vmaig_blog/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+# compress js css压缩配置
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 
 # 设置user model
 AUTH_USER_MODEL = "vmaig_auth.VmaigUser"

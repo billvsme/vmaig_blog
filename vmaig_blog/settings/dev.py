@@ -2,6 +2,8 @@
 
 from .base import *
 
+COMPRESS_ENABLED = False
+
 WSGI_APPLICATION = 'vmaig_blog.wsgi_dev.application'
 
 # Database
