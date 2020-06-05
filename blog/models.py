@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 class string_with_title(str):
@@ -70,7 +71,6 @@ class Category(models.Model):
         app_label = string_with_title('blog', u"博客管理")
 
     def get_absolute_url(self):
-        from django.core.urlresolvers import reverse
         return reverse('category-detail-view', args=(self.name,))
 
     def __unicode__(self):
@@ -117,7 +117,6 @@ class Article(models.Model):
         app_label = string_with_title('blog', u"博客管理")
 
     def get_absolute_url(self):
-        from django.core.urlresolvers import reverse
         return reverse('article-detail-view', args=(self.en_title,))
 
     def __unicode__(self):
@@ -141,7 +140,6 @@ class Column(models.Model):
         app_label = string_with_title('blog', u"博客管理")
 
     def get_absolute_url(self):
-        from django.core.urlresolvers import reverse
         return reverse('column-detail-view', args=(self.name,))
 
     def __unicode__(self):
@@ -179,7 +177,6 @@ class News(models.Model):
         app_label = string_with_title('blog', u"博客管理")
 
     def get_absolute_url(self):
-        from django.core.urlresolvers import reverse
         return reverse('news-detail-view', args=(self.pk,))
 
     def __unicode__(self):
