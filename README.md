@@ -36,10 +36,10 @@ vmaig\_blog 是一个基于  **Django2.2**  跟  **Bootstrap3**  开发的 **博
 https://vmaig.com   
 
 # 预览
-![首页](http://vmaig.qiniudn.com/screenshot/vmaig_01.jpg)
-![头像](http://vmaig.qiniudn.com/screenshot/vmaig_02.jpg)
-![评论](http://vmaig.qiniudn.com/screenshot/vmaig_03.jpg)
-![新闻](http://vmaig.qiniudn.com/screenshot/vmaig_news.jpg)
+![首页](https://vmaig.com/static/img/vmaig_01.jpg)
+![头像](https://vmaig.com/static/img/vmaig_02.jpg)
+![评论](https://vmaig.com/static/img/vmaig_03.jpg)
+![新闻](https://vmaig.com/static/img/vmaig_news.jpg)
 
 # 安装运行
 安装virtualenv :
@@ -68,9 +68,9 @@ https://vmaig.com
     pip install -r requirements.txt
 （注意如果使用python3，还需要pip install python3-memcached）
 
-配置setting.py :
+配置vmaig_blog/settings/dev.py (继承vmaig_blog/settings/base.py):
 
-    vim vmaig_blog/setting.py
+    vim vmaig_blog/settings/dev.py
 设置其中的  PAGE\_NUM 每页显示文章数，EMAIL\_HOST(你用的邮箱的smtp)，EMAIL\_PORT(smtp端口)，EMAIL\_HOST\_USER(你的邮箱的用户名)，EMAIL\_HOST\_PASSWORD(你的邮箱密码)，如果要使用七牛设置好七牛的相关配置。  
 **注意**：如果想用使用ssl的邮箱（比如qq邮箱），请安装django-smtp-ssl，详见https://github.com/bancek/django-smtp-ssl
 ```
@@ -88,11 +88,6 @@ https://vmaig.com
 
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-    # 七牛配置
-    QINIU_ACCESS_KEY = ''
-    QINIU_SECRET_KEY = ''
-    QINIU_BUCKET_NAME = ''
-    
     # 网站标题等内容配置
     WEBSITE_TITLE = u'Vmaig'
     WEBSITE_WELCOME = u'欢迎来到Vmaig'
@@ -109,51 +104,6 @@ https://vmaig.com
     python manage.py runserver
     
     
-# 生产环境部署
-	
-使用docker部署，首先pull下来image或者自己使用项目中Dockerfile或者Dockerfile_cn build。
-	
-	sudo docker pull billvsme/vmaig_blog
-然后运行image  
-	例子:
-	
-	sudo docker run -d -p 80:80 --name vmaig\
-                            -e WEBSITE_TITLE='Vmaig'\
-                            -e SECRET_KEY='django secret key'\
-                            -e WEBSITE_WELCOME='欢迎来到vmaig'\
-                            -e EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend' \
-                            -e EMAIL_HOST='smtp.163.com'\
-                            -e EMAIL_PORT='25'\
-                            -e EMAIL_HOST_USER='yourname@163.com'\
-                            -e EMAIL_SUBJECT_PREFIX='vmaig'\
-                            -e EMAIL_HOST_PASSWORD='yourpassword'\
-                            -e QINIU_ACCESS_KEY='your_as_key'\
-                            -e QINIU_SECRET_KEY='your_sr_key'\
-                            -e QINIU_URL='your_url'\
-                            -e QINIU_BUCKET_NAME='your_bucket_name'\
-                            billvsme/vmaig_blog
-    
-**环境变量**:  
-其中：EMAIL_HOST，EMAIL_PORT，EMAIL_HOST_USER，EMAIL_HOST_PASSWORD是必须的，如果不指定，用户注册不了
-
-	WEBSITE_TITLE  网站的title
-	WEBSITE_WELCOME  首页显示的欢迎消息
-	
-	EMAIL_BACKEND  email的引擎，默认是django.core.mail.backends.smtp.EmailBackend，如果想支持qq邮箱请使用django_smtp_ssl.SSLEmailBackend
-	EMAIL_HOST  SMTP地址
-	EMAIL_PORT  SMTP端口
-	EMAIL_HOST_USER  邮箱名称
-	EMAIL_HOST_PASSWORD  邮箱密码
-	EMAIL_SUBJECT_PREFIX  邮件Subject-line前缀
-	
-	# 默认头像保存在服务器，如果想保存在七牛中要定义下面这些环境变量
-	QINIU_ACCESS_KEY  七牛的access key
-	QINIU_SECRET_KEY  七牛的secret key
-	QINIU_BUCKET_NAME  七牛的bucket
-	QINIU_URL  七牛的url
-	
-运行后，默认管理员用户名为 admin，密码为 password ， 请登录 http://your-domain/admin 更改密码。                   
-
 # 接下来该干什么？
 在浏览器中输入 http://127.0.0.1:8000/admin  
 输入前面初始化数据库时的用户名密码。  
@@ -168,5 +118,3 @@ https://vmaig.com
 **特别注意**
 首页的便签云中的内容，在后台不能修改。
 请修改  blog/templates/blog/widgets/tags_cloud.html 中的 tags数组的内容。
-
-
