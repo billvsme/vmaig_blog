@@ -21,7 +21,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'boboblog',
         'USER': 'root',
-        'PASSWORD': 'qqdb123456@',
+        'PASSWORD': 'qqdb123456',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
