@@ -201,5 +201,5 @@ QINIU_BUCKET_NAME = ''
 QINIU_URL = ''
 
 # 网站标题等内容配置
-WEBSITE_TITLE = u'Vmaig'
-WEBSITE_WELCOME = u'欢迎来到Vmaig，有问题欢迎加qq群458788510'
+WEBSITE_TITLE = u'灰狼的blog'
+WEBSITE_WELCOME = u'欢迎来到灰狼的blog，有问题欢迎加企鹅1744381765'
