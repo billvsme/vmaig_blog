@@ -39,7 +39,7 @@ class Nav(models.Model):
     name = models.CharField(max_length=40, verbose_name=u'导航条内容')
     url = models.CharField(max_length=200, blank=True, null=True,
                            verbose_name=u'指向地址')
-
+    rank = models.IntegerField(default=0, verbose_name=u'排序')
     status = models.IntegerField(default=0, choices=STATUS.items(),
                                  verbose_name=u'状态')
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
