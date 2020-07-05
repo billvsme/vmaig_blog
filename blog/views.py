@@ -44,7 +44,8 @@ class BaseMixin(object):
             context['hot_article_list'] = \
                 Article.objects.order_by("-view_times")[0:10]
             # 导航条
-            context['nav_list'] = Nav.objects.filter(status=0)
+            # context['nav_list'] = Nav.objects.filter(status=0)
+            context['nav_list'] = Nav.objects.order_by('rank').filter(status=0)
             # 最新评论
             context['latest_comment_list'] = \
                 Comment.objects.order_by("-create_time")[0:10]
