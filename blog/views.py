@@ -38,7 +38,9 @@ class BaseMixin(object):
         context = super(BaseMixin, self).get_context_data(**kwargs)
         try:
             # 网站标题等内容
-            context['website_title'] = settings.WEBSITE_TITLE
+            if 'website_title' not in context:
+                context['website_title'] = settings.WEBSITE_TITLE
+
             context['website_welcome'] = settings.WEBSITE_WELCOME
             # 热门文章
             context['hot_article_list'] = \
@@ -119,6 +121,10 @@ class ArticleView(BaseMixin, DetailView):
         en_title = self.kwargs.get('slug', '')
         kwargs['comment_list'] = \
             self.queryset.get(en_title=en_title).comment_set.all()
+
+        article = self.queryset.get(en_title=en_title)
+        kwargs['website_title'] = article.title
+
         return super(ArticleView, self).get_context_data(**kwargs)
 
 
