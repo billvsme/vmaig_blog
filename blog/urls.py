@@ -6,7 +6,7 @@ from blog.models import News
 
 urlpatterns = [
         url(r'^$', IndexView.as_view(), name='index-view'),
-        url(r'^article/(?P<slug>\w+).html$',
+        url(r'^article/(?P<slug>[\s\S]*).html$',
             ArticleView.as_view(), name='article-detail-view'),
         url(r'^all/$', AllView.as_view(), name='all-view'),
         url(r'^search/$', SearchView.as_view()),
@@ -22,13 +22,13 @@ urlpatterns = [
         url(r'^resetpassword/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$',
             TemplateView.as_view(template_name="blog/resetpassword.html"),
             name='resetpassword-view'),
-        url(r'^column/(?P<column>\w+)/$',
+        url(r'^column/(?P<column>[\s\S]*)/$',
             ColumnView.as_view(), name='column-detail-view'),
-        url(r'^user/(?P<slug>\w+)$', UserView.as_view(), name='user-view'),
+        url(r'^user/(?P<slug>[\s\S]*)$', UserView.as_view(), name='user-view'),
         url(r'^news/$', NewsView.as_view(), name='news-view'),
-        url(r'^news/(?P<pk>\w+)$',
+        url(r'^news/(?P<pk>[\s\S]*)$',
             DetailView.as_view(model=News), name='news-detail-view'),
-        url(r'^tag/(?P<tag>\w+)/$', TagView.as_view(), name='tag-detail-view'),
-        url(r'^category/(?P<category>\w+)/$',
+        url(r'^tag/(?P<tag>[\s\S]*)/$', TagView.as_view(), name='tag-detail-view'),
+        url(r'^category/(?P<category>[\s\S]*)/$',
             CategoryView.as_view(), name='category-detail-view'),
 ]

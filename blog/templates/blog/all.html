@@ -23,7 +23,10 @@
         <div class="well">
             <div class="sort">
                 <label>
-                    <input type="radio" name="sort" value="time" checked="checked"> 按时间排序
+                    <input type="radio" name="sort" value="default" checked="checked"> 默认排序
+                </label>
+                <label>
+                    <input type="radio" name="sort" value="time"> 按时间排序
                 </label>
                 <label>
                     <input type="radio" name="sort" value="recommend"> 按热度排序
@@ -56,7 +59,7 @@
     </div>
 
     <div id="vmaig-side" class="col-md-4 col-lg-3 hidden-xs">
-        {% include "blog/widgets/tags_cloud.html"%}
+        {% include "blog/widgets/my_info.html"%}
         {% include "blog/widgets/search.html"%}
         {% include "blog/widgets/hotest_posts.html"%}
         {% include "vmaig_comments/latest_comments.html"%}

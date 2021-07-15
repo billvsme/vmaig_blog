@@ -5,7 +5,15 @@
     <meta charset="UTF-8">
     <!--手机html -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-    <title>{{website_title}}</title>
+    {% if article %}
+        <title>{{article.category.name}}-{{article.title}}</title>
+        <meta name="keywords" content="{{article}}" />
+        <meta name="description" content="{{article}},运维开发路其慢慢修远兮,吾将上下而求索" />
+    {% else %}
+        <title>{{website_title}}</title>
+        <meta name="keywords" content="运维,运维开发,个人blog,blog,技术博客,博客" />
+        <meta name="description" content="技术博客,运维开发路其慢慢修远兮,吾将上下而求索" />
+    {% endif %}
     <link rel="shortcut icon" href="/static/img/favicon.ico"/>
     <link rel="bookmark" href="/static/img/favicon.ico"/>
     {% compress css %}
@@ -36,7 +44,8 @@
         </div>
         <footer>
            <div class="container">
-               <p class="text-center">基于Dajngo1.8,Bootsratp3, <a href="/sitemap.xml">网站地图</a></p>
+               <p class="text-center">Copyright © 2018-2020 灰狼 保留所有权利，<a href="https://tongji.baidu.com/">百度统计,</a><a href="/sitemap/sitemap.xml">网站地图</a></p>
+               <p class="text-center"><a href="http://www.miitbeian.gov.cn">渝ICP备18011705号-1</a></p>
            </div>
         </footer>
     </div>
