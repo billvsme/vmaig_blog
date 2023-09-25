@@ -6,4 +6,4 @@ django-redis==4.12.1
 django-smtp-ssl==1.0
 django-compressor==2.4
 psycopg2==2.8.5
-gevent==20.5.0
+gevent==23.9.1
