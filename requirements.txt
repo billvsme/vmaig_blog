@@ -1,4 +1,4 @@
-Django==2.2.13
+Django==3.2.24
 Pillow==6.2.2
 qiniu==7.0.5
 pytz==2015.7
